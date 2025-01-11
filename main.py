@@ -38,10 +38,6 @@ else:
     print(f"Joystick name: {joystick.get_name()}")
 
 
-#def normalize(value, input_min=-1, input_max=1, output_min=-100, output_max=100):
-     # return ((value - input_min) * (output_max - output_min) / (input_max - input_min)) + output_min
-#def scale(value, output_max=100):
-      #return value*output_max
 def joystick_to_pwm(value):
       scaled_value = value * 100
       normalized_value = scaled_value / 1000
@@ -60,8 +56,7 @@ while running:
             axis_1 = joystick.get_axis(1)
             axis_2 = joystick.get_axis(2)
             axis_3 = joystick.get_axis(3)
-            #print(f"Axis 0: {axis_0}, Axis 1: {axis_1}, Axis 2: {axis_2} Axis 3: {axis_3}")
-
+            
             axis_0_pwm_value = joystick_to_pwm(axis_0)
             axis_1_pwm_value = joystick_to_pwm(axis_1)
             axis_2_pwm_value = joystick_to_pwm(axis_2)
