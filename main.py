@@ -63,10 +63,10 @@ while running:
             axis_3 = joystick.get_axis(3)
             #print(f"Axis 0: {axis_0}, Axis 1: {axis_1}, Axis 2: {axis_2} Axis 3: {axis_3}")
 
-            axis_0_normalized = joystick_to_pwm(axis_0)
-            axis_1_normalized = joystick_to_pwm(axis_1)
-            axis_2_normalized = joystick_to_pwm(axis_2)
-            axis_3_normalized = joystick_to_pwm(axis_3)
+            axis_0_pwm_value = joystick_to_pwm(axis_0)
+            axis_1_pwm_value = joystick_to_pwm(axis_1)
+            axis_2_pwm_valued = joystick_to_pwm(axis_2)
+            axis_3_pwm_value = joystick_to_pwm(axis_3)
             print(f"Axis 0: {axis_0_normalized}, Axis 1: {axis_1_normalized}, Axis 2: {axis_2_normalized}, Axis 3: {axis_3_normalized}")
 
 
