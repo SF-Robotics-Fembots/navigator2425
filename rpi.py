@@ -6,7 +6,7 @@ import socket
 host_ip = '10.0.0.58' 
 port = 8080
 
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM):
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((host_ip, port))
 s.sendall(b"hello, world")
 data = s.recv(1024)
