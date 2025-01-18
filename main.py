@@ -7,10 +7,10 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 print ("Socket successfully created")
 
 
-host_ip = '10.0.0.97' 
+host_ip = '10.0.0.58' 
 port = 8080
 
-# s.bind((host_ip, port))
+s.bind((host_ip, port))
 
 # while True:
     
