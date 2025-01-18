@@ -77,8 +77,9 @@ while running:
             }
             if conn:
                 s.sendall(str(pwm_value).encode('utf-8'))
-            s.close()
-
+            
+            
             time.sleep(1)
             pygame.quit()
 
+quit = s.close()
