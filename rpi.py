@@ -1,6 +1,6 @@
 import socket
 
-host_ip = '10.0.0.58' 
+host_ip = '10.0.0.97' 
 port = 8080
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -10,5 +10,5 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
 print(f"received{data!r}")
 
-while True:
-    
+running = True
+while running:
