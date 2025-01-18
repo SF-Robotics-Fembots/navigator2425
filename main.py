@@ -1,6 +1,7 @@
 import pygame
 
 import socket
+import time
 #this code actually works so far (convert joystick values to pwm)
  
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
@@ -11,11 +12,7 @@ host_ip = '10.0.0.58'
 port = 8080
 
 s.bind((host_ip, port))
-
-# while True:
-    
-print ("the socket has successfully connected") 
-
+conn, addr = s.accept()
 
 pygame.init()
 
@@ -66,6 +63,17 @@ while running:
             #         pass
 
             print(f"Axis 0: {axis_0_pwm_value}, Axis 1: {axis_1_pwm_value}, Axis 2: {axis_2_pwm_value}, Axis 3: {axis_3_pwm_value}")
+    
+print ("the socket has successfully connected")
+pwm_value = {
+    joystick_to_pwm(axis_0),
+    joystick_to_pwm(axis_1),
+    joystick_to_pwm(axis_2),
+    joystick_to_pwm(axis_3),
+}
+conn.sendall(str(pwm_value).encode('utf-8'))
+time.sleep(1)
+
 
 pygame.quit()
 
