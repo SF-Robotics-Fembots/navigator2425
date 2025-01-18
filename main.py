@@ -32,10 +32,11 @@ else:
 
 
 def joystick_to_pwm(value):
-      scaled_value = value * 100
-      normalized_value = scaled_value / 1000
-      pwm_value = 1500 + (normalized_value * 5000)
-      pwm_value = max(1000, min(2000, pwm_value))
+    pwm_value = 1500 + (value * 500)
+    #   scaled_value = value * 100
+    #   normalized_value = scaled_value / 1000
+    #   pwm_value = 1500 + (normalized_value * 5000)
+    #   pwm_value = max(1000, min(2000, pwm_value))
       
       return int(pwm_value)
 
