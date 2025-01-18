@@ -6,12 +6,12 @@ import socket
 host_ip = '10.0.0.58' 
 port = 8080
 
-with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
-    client_socket.connect((host_ip, port))
-    client_socket.sendall(b"hello, world")
-    data = client_socket.recv(1024)
-    pwm_values = data.decode('utf-8').strip()
-    print("received pwm values: ", pwm_values)
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM):
+s.connect((host_ip, port))
+s.sendall(b"hello, world")
+data = s.recv(1024)
+pwm_values = data.decode('utf-8').strip()
+print("received pwm values: ", pwm_values)
 
 # PWM_PIN = 18
 # FREQUENCY = 100
