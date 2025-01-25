@@ -23,7 +23,7 @@ while True:
     #pwm_values = message.decode('utf-8').strip()
     #print("received pwm values: ", pwm_values)
 
-    PWM_PIN = [0, 1, 2, 14, 15]
+    PWM_PIN = 15
     FREQUENCY = 100
     SERVER_URL = ""
 
