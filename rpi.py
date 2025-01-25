@@ -6,13 +6,15 @@ import socket
 host_ip = '10.0.0.58' 
 port = 8080
 
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect((host_ip, port))
+client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+client_socket.connect((host_ip, port))
 print("1")
-# s.sendall(b"hello, world")
-print("...")
-data = s.recv(1024)
-print(f"recieved message: ", data.decode('utf-8'))
+#s.sendall(b"hello, world")
+#print("...")
+#data = s.recv(1024)
+#print(f"recieved message: ")
+message = client_socket.recv(1024).decode('utf-8')
+print(f"message from server {message}")
 
 
 # pwm_values = data.decode('utf-8').strip()
