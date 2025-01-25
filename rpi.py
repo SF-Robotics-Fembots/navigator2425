@@ -1,7 +1,6 @@
 import socket
 import requests
 import RPi.GPIO as GPIO # type: ignore
-import time
 
 host_ip = '10.0.0.58' 
 port = 8080
@@ -43,6 +42,8 @@ while True:
         else:
             print("PWM value out of range")
             return None
+        
+    GPIO.cleanup()
         # except requests.RequestsException as e:
         #     print(f"Error fetching pwm values")
         #     return None
