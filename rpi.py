@@ -14,8 +14,7 @@ print("1")
 #data = s.recv(1024)
 #print(f"recieved message: ")
 
-servoPIN = 15
-p = GPIO.PWM(servoPIN, 100)
+
 
 while True:
     data = client_socket.recv(1024)
@@ -30,6 +29,8 @@ while True:
 
     # PWM_PIN = [0, 1, 2, 14, 15]
     # FREQUENCY = 100
+    servoPIN = 15
+    p = GPIO.PWM(servoPIN, 100)
     SERVER_URL = ""
 
     # GPIO.setmode(GPIO.BCM)
