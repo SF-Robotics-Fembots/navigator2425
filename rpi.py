@@ -10,8 +10,11 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((host_ip, port))
 s.sendall(b"hello, world")
 data = s.recv(1024)
-pwm_values = data.decode('utf-8').strip()
-print("received pwm values: ", pwm_values)
+print(f"recieved message: {data}")
+
+
+# pwm_values = data.decode('utf-8').strip()
+# print("received pwm values: ", pwm_values)
 
 # PWM_PIN = 18
 # FREQUENCY = 100
