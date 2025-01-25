@@ -56,9 +56,6 @@ while running:
     # s.send(msg)
     # print("message sent to client")
 
-
-
-'''
 while running: 
      for event in pygame.event.get():
          if event.type == pygame.QUIT:
@@ -90,11 +87,11 @@ while running:
                  joystick_to_pwm(axis_3),
              }
             
-             s.sendall(str(pwm_value).encode('utf-8'))
+            # s.sendall(str(pwm_value).encode('utf-8'))
             
             
              time.sleep(1)
-'''
+
             
 pygame.quit()
 s.close()
