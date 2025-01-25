@@ -14,13 +14,15 @@ print("1")
 #data = s.recv(1024)
 #print(f"recieved message: ")
 while True:
-    message = client_socket.recv(1024).decode('utf-8')
-    print(f"message from server: {message}")
+    data = client_socket.recv(1024)
+    pwm_string = data.decode('utf-8')
+    pwm_values = list(map(int, pwm_string.split(',')))
+    print("recieved pwm values:", pwm_values)
+    # message = client_socket.recv(1024).decode('utf-8')
+    # print(f"message from server: {message}")
 
-
-
-    pwm_values = message.decode('utf-8').strip()
-    print("received pwm values: ", pwm_values)
+    #pwm_values = message.decode('utf-8').strip()
+    #print("received pwm values: ", pwm_values)
 
     PWM_PIN = 18
     FREQUENCY = 100
