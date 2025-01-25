@@ -34,34 +34,34 @@ while True:
     pwm.start(0)
 
     def get_pwm_value():
-        try:
-            response = requests.get(SERVER_URL)
-            response.raise_for_status()
-            pwm_value = response.json().get('pwm_vlaue')
-            if 1000 <= pwm_value <= 2000:
-                return pwm_value
-            else:
-                print("PWM value out of range")
-                return None
-        except requests.RequestsException as e:
-            print(f"Error fetching pwm values")
+        # try:
+        response = requests.get(SERVER_URL)
+        response.raise_for_status()
+        pwm_value = response.json().get('pwm_vlaue')
+        if 1000 <= pwm_value <= 2000:
+            return pwm_value
+        else:
+            print("PWM value out of range")
             return None
+        # except requests.RequestsException as e:
+        #     print(f"Error fetching pwm values")
+        #     return None
 
-    def convert_to_duty_cycle(pwm_value):
-        return (pwm_value - 1000) / 10
+    # def convert_to_duty_cycle(pwm_value):
+    #     return (pwm_value - 1000) / 10
 
-    try:
-        while True:
-            pwm_value = get_pwm_value()
-            if pwm_value is not None:
-                duty_cycle = convert_to_duty_cycle(pwm_value)
-                pwm.ChangeDutyCycle(duty_cycle)
-                print(f"set duty cycle to {duty_cycle}%")
-            time.sleep(1)
+    # try:
+    #     while True:
+    #         pwm_value = get_pwm_value()
+    #         if pwm_value is not None:
+    #             duty_cycle = convert_to_duty_cycle(pwm_value)
+    #             pwm.ChangeDutyCycle(duty_cycle)
+    #             print(f"set duty cycle to {duty_cycle}%")
+    #         time.sleep(1)
 
-    except KeyboardInterrupt:
-        print("Program interrupted")
+    # except KeyboardInterrupt:
+    #     print("Program interrupted")
 
-    finally:
-        pwm.stop()
-        GPIO.cleanup()
+    # finally:
+    #     pwm.stop()
+    #     GPIO.cleanup()

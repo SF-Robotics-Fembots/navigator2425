@@ -36,9 +36,6 @@ else:
 
 def joystick_to_pwm(value):
     pwm_value = 1500 + (value * 500)
-    #   scaled_value = value * 100
-    #   normalized_value = scaled_value / 1000
-    #   pwm_value = 1500 + (normalized_value * 5000)
     pwm_value = max(1000, min(2000, pwm_value))
       
     return int(pwm_value)
@@ -70,14 +67,6 @@ while running:
             axis_2_pwm_value = joystick_to_pwm(axis_2)
             axis_3_pwm_value = joystick_to_pwm(axis_3)
 
-            # for pwm_value in range(1000, 2000):
-            #     if ((pwm_value > 2000) and (pwm_value < 1000)):
-            #        joystick_to_pwm()
-            #     elif ((pwm_value < 2000) and (pwm_value > 1000)):
-            #          pass
-            #     else:
-            #         pass
-
             print(f"Axis 0: {axis_0_pwm_value}, Axis 1: {axis_1_pwm_value}, Axis 2: {axis_2_pwm_value}, Axis 3: {axis_3_pwm_value}")
             with client_socket:
                 print("_ _ _")
@@ -92,6 +81,6 @@ while running:
 
             time.sleep(1)
 
-            
+
 pygame.quit()
 s.close()
