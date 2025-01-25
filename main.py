@@ -46,40 +46,49 @@ def joystick_to_pwm(value):
 
 running = True
 while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-        elif event.type == pygame.JOYAXISMOTION:
-            axis_0 = joystick.get_axis(0)
-            axis_1 = joystick.get_axis(1)
-            axis_2 = joystick.get_axis(2)
-            axis_3 = joystick.get_axis(3)
-            
-            axis_0_pwm_value = joystick_to_pwm(axis_0)
-            axis_1_pwm_value = joystick_to_pwm(axis_1)
-            axis_2_pwm_value = joystick_to_pwm(axis_2)
-            axis_3_pwm_value = joystick_to_pwm(axis_3)
+    msg = str(input("enter your message here: "))
+    msg = msg.encode(1024)
+    print("input recieved")
+    s.send(msg)
 
-            # for pwm_value in range(1000, 2000):
-            #     if ((pwm_value > 2000) and (pwm_value < 1000)):
-            #        joystick_to_pwm()
-            #     elif ((pwm_value < 2000) and (pwm_value > 1000)):
-            #          pass
-            #     else:
-            #         pass
 
-            print(f"Axis 0: {axis_0_pwm_value}, Axis 1: {axis_1_pwm_value}, Axis 2: {axis_2_pwm_value}, Axis 3: {axis_3_pwm_value}")
-            pwm_value = {
-                joystick_to_pwm(axis_0),
-                joystick_to_pwm(axis_1),
-                joystick_to_pwm(axis_2),
-                joystick_to_pwm(axis_3),
-            }
-            if conn:
-                s.sendall(str(pwm_value).encode('utf-8'))
+'''
+while running: 
+     for event in pygame.event.get():
+         if event.type == pygame.QUIT:
+             running = False
+         elif event.type == pygame.JOYAXISMOTION:
+             axis_0 = joystick.get_axis(0)
+             axis_1 = joystick.get_axis(1)
+             axis_2 = joystick.get_axis(2)
+             axis_3 = joystick.get_axis(3)
+            
+             axis_0_pwm_value = joystick_to_pwm(axis_0)
+             axis_1_pwm_value = joystick_to_pwm(axis_1)
+             axis_2_pwm_value = joystick_to_pwm(axis_2)
+             axis_3_pwm_value = joystick_to_pwm(axis_3)
+
+             # for pwm_value in range(1000, 2000):
+             #     if ((pwm_value > 2000) and (pwm_value < 1000)):
+             #        joystick_to_pwm()
+             #     elif ((pwm_value < 2000) and (pwm_value > 1000)):
+             #          pass
+             #     else:
+             #         pass
+
+             print(f"Axis 0: {axis_0_pwm_value}, Axis 1: {axis_1_pwm_value}, Axis 2: {axis_2_pwm_value}, Axis 3: {axis_3_pwm_value}")
+             pwm_value = {
+                 joystick_to_pwm(axis_0),
+                 joystick_to_pwm(axis_1),
+                 joystick_to_pwm(axis_2),
+                 joystick_to_pwm(axis_3),
+             }
+            
+             s.sendall(str(pwm_value).encode('utf-8'))
             
             
-            time.sleep(1)
+             time.sleep(1)
+'''
             
 pygame.quit()
 s.close()
