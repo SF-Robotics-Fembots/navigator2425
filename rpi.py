@@ -15,7 +15,7 @@ print("1")
 #print(f"recieved message: ")
 while True:
     message = client_socket.recv(1024).decode('utf-8')
-    print(f"message from server {message}")
+    print(f"message from server: {message}")
 
 
 
