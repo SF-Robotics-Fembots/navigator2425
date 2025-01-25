@@ -12,7 +12,7 @@ port = 8080
 
 s.bind((host_ip, port))
 s.listen(1)
-#client_socket, client_address = s.accept()
+client_socket, client_address = s.accept()
 print ("the socket has successfully connected")
 
 try:
@@ -45,10 +45,10 @@ def joystick_to_pwm(value):
 
 running = True
 while running:
-    client_socket, client_address = s.accept()
+    #client_socket, client_address = s.accept()
     message = str(input("enter your message here: "))
     client_socket.sendall(message.encode('utf-8'))
-    
+
     # msg = str(input("enter your message here: "))
     # msg = msg.encode()
     # print("input recieved")
