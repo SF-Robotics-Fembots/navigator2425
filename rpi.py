@@ -9,8 +9,9 @@ port = 8080
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((host_ip, port))
 s.sendall(b"hello, world")
+print("...")
 data = s.recv(1024)
-print(f"recieved message: {data}")
+print(f"recieved message: ")
 
 
 # pwm_values = data.decode('utf-8').strip()
