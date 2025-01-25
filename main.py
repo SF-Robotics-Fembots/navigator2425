@@ -1,5 +1,4 @@
 import pygame
-
 import socket
 import time
 #this code actually works so far (convert joystick values to pwm)
@@ -47,7 +46,7 @@ def joystick_to_pwm(value):
 running = True
 while running:
     msg = str(input("enter your message here: "))
-    msg = msg.encode(1024)
+    msg = msg.encode()
     print("input recieved")
     s.send(msg)
 
