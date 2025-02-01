@@ -35,12 +35,12 @@ while True:
 
     while True:
         datain = client_socket.recv(1024)
-        print(datain)
+        print("DI" + datain)
         if not datain: break
         data = datain[-44:]
     
     #if not data: break
-    print(data)
+    print("D" + data)
     json_data = data.decode('utf-8')
     pwm_values = json.loads(json_data)
     # pwm_string = data.decode('utf-8')
