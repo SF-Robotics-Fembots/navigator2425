@@ -31,10 +31,13 @@ def get_pwm_value():
 while True:
     p.start(2.5) # Initialization
     data = client_socket.recv(1024)
-    pwm_string = data.decode('utf-8')
+    json_data = data.decode('utf-8')
+    pwm_values = json.loads(json_data)
+    # pwm_string = data.decode('utf-8')
     # pwm_values = list(map(float, pwm_string.split(',')))
-    print("recieved pwm values:", pwm_string)
+    print("recieved pwm values:", pwm_values)
     SERVER_URL = ""
+    
     
     try:
         time.sleep(0.1)
@@ -42,3 +45,5 @@ while True:
         p.stop()
     except:
         GPIO.cleanup()
+
+client_socket.close()

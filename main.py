@@ -1,6 +1,6 @@
 import pygame
 import socket
-import time
+import time, json
 #this code actually works so far (convert joystick values to pwm)
 #this code works (sending and recieving messages back and forth)
 
@@ -74,17 +74,19 @@ while running:
             print("............")
 
             pwm_values = {
-                'x':joystick.get_axis(0),
-                'y':joystick.get_axis(1),
+                'x': joystick.get_axis(0),
+                'y': joystick.get_axis(1),
                 'r': joystick.get_axis(2),
-                'v':joystick.get_axis(3)
+                'v': joystick.get_axis(3)
             }
 
             pwm_values = {
         
             }
-            pwm_string = ','.join(map(str, pwm_values))
-            client_socket.sendall(pwm_string.encode('utf-8'))
+            # pwm_string = ','.join(map(str, pwm_values))
+            # client_socket.sendall(pwm_string.encode('utf-8'))\
+            json_data = json.dumps(pwm_values)
+            client_socket.sendall(json_data.encode('utf-8'))
             
             print(f"Axis 0: {axis_0}, Axis 1: {axis_1}, Axis 2: {axis_2}, Axis 3: {axis_3}")
 
@@ -92,9 +94,4 @@ while running:
 
 
 pygame.quit()
-s.close()
-
-# joystick_to_pwm(axis_0),
-                # joystick_to_pwm(axis_1),
-                # joystick_to_pwm(axis_2),
-                # joystick_to_pwm(axis_3),
+client_socket.close()
