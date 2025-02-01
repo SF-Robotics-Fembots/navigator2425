@@ -19,12 +19,20 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(servoPIN, GPIO.OUT)
 p = GPIO.PWM(servoPIN, 100)
 
+def get_pwm_value():
+        # try:
+        response = requests.get(SERVER_URL)
+        response.raise_for_status()
+        pwm_value = response.json().get('pwm_vlaue')
+        if 1000 <= pwm_value <= 2000:
+            return pwm_value
+        else:
+            print("PWM value out of range")
+            return None
+
 while True:
     p.start(2.5) # Initialization
     try:
-        p.ChangeDutyCycle(5)
-        time.sleep(0.1)
-        p.ChangeDutyCycle(10)
         time.sleep(0.1)
     except KeyboardInterrupt:
         p.stop()
@@ -39,13 +47,4 @@ while True:
 
     SERVER_URL = ""
 
-    def get_pwm_value():
-        # try:
-        response = requests.get(SERVER_URL)
-        response.raise_for_status()
-        pwm_value = response.json().get('pwm_vlaue')
-        if 1000 <= pwm_value <= 2000:
-            return pwm_value
-        else:
-            print("PWM value out of range")
-            return None
+    
