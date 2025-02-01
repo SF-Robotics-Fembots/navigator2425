@@ -35,7 +35,7 @@ while True:
     pwm_values = json.loads(json_data)
     # pwm_string = data.decode('utf-8')
     # pwm_values = list(map(float, pwm_string.split(',')))
-    print("recieved pwm values:", pwm_values)
+    print("received pwm values:", pwm_values)
     SERVER_URL = ""
     
     

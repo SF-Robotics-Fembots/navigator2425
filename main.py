@@ -80,9 +80,6 @@ while running:
                 'v': joystick.get_axis(3)
             }
 
-            pwm_values = {
-        
-            }
             # pwm_string = ','.join(map(str, pwm_values))
             # client_socket.sendall(pwm_string.encode('utf-8'))\
             json_data = json.dumps(pwm_values)
