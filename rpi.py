@@ -63,7 +63,7 @@ while True:
             print("PWM value out of range")
             return None
         
-    GPIO.cleanup()
+   #  GPIO.cleanup()
         # except requests.RequestsException as e:
         #     print(f"Error fetching pwm values")
         #     return None
