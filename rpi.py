@@ -20,6 +20,19 @@ GPIO.setup(servoPIN, GPIO.OUT)
 p = GPIO.PWM(servoPIN, 100)
 
 while True:
+    p.start(2.5) # Initialization
+    try:
+        p.ChangeDutyCycle(5)
+        time.sleep(4)
+        p.ChangeDutyCycle(10)
+        time.sleep(4)
+    except KeyboardInterrupt:
+        p.stop()
+    except:
+        #print ("exception")
+
+        GPIO.cleanup()
+
     data = client_socket.recv(1024)
     pwm_string = data.decode('utf-8')
     pwm_values = list(map(int, pwm_string.split(',')))
@@ -36,21 +49,6 @@ while True:
     # GPIO.setup(PWM_PIN, GPIO.OUT)
     # pwm = GPIO.PWM(PWM_PIN, FREQUENCY)
     # pwm.start(0)
-
-    p.start(2.5) # Initialization
-    try:
-
-        p.ChangeDutyCycle(5)
-        time.sleep(4)
-        p.ChangeDutyCycle(10)
-        time.sleep(4)
-    except KeyboardInterrupt:
-        p.stop()
-    except:
-        #print ("exception")
-
-        GPIO.cleanup()
-
 
     def get_pwm_value():
         # try:
