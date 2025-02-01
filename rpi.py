@@ -36,6 +36,7 @@ while True:
 
     while True:
         try:
+            datain = client_socket.recv(1024)
             print("DI", datain)
         except:
             # if len(datain) < 5: break
