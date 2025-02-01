@@ -32,7 +32,12 @@ def get_pwm_value():
 p.start(2.5) # Initialization
 
 while True:
-    data = client_socket.recv(44)
+
+    while True:
+        datain = client_socket.recv(1024)
+        if not datain: break
+        data = datain[-44:]
+    
     #if not data: break
     print(data)
     json_data = data.decode('utf-8')
