@@ -31,14 +31,15 @@ def get_pwm_value():
 
 
 p.start(2.5) # Initialization
-
+datain = client_socket.recv(1024)
 while True:
 
     while True:
-        datain = client_socket.recv(1024)
-        print("DI", datain)
-        if len(datain) < 5: break
-        data = datain[-44:]
+        try:
+            print("DI", datain)
+        except:
+            # if len(datain) < 5: break
+            data = datain[-44:]
     
     #if not data: break
     print("D", data)
