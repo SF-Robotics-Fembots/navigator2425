@@ -38,7 +38,7 @@ while True:
         try:
             datain = client_socket.recv(1024)
             print("DI", datain)
-        except BlockingIoError:
+        except BlockingIOError:
             # if len(datain) < 5: break
             data = datain[-44:]
             break
