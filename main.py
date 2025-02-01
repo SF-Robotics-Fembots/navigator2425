@@ -34,11 +34,11 @@ else:
     print(f"Joystick name: {joystick.get_name()}")
 
 
-def joystick_to_pwm(value):
-    pwm_value = 1500 + (value * 500)
-    pwm_value = max(1000, min(2000, pwm_value))
+# def joystick_to_pwm(value):
+#     pwm_value = 1500 + (value * 500)
+#     pwm_value = max(1000, min(2000, pwm_value))
       
-    return int(pwm_value)
+#     return int(pwm_value)
 
 
 running = True
@@ -64,26 +64,31 @@ while running:
             axis_2 = joystick.get_axis(2)
             axis_3 = joystick.get_axis(3)
         
-            axis_0_pwm_value = joystick_to_pwm(axis_0)
-            axis_1_pwm_value = joystick_to_pwm(axis_1)
-            axis_2_pwm_value = joystick_to_pwm(axis_2)
-            axis_3_pwm_value = joystick_to_pwm(axis_3)
+            # axis_0_pwm_value = joystick_to_pwm(axis_0)
+            # axis_1_pwm_value = joystick_to_pwm(axis_1)
+            # axis_2_pwm_value = joystick_to_pwm(axis_2)
+            # axis_3_pwm_value = joystick_to_pwm(axis_3)
 
             # with client_socket:
             print("............")
             pwm_values = {
-                joystick_to_pwm(axis_0),
-                joystick_to_pwm(axis_1),
-                joystick_to_pwm(axis_2),
-                joystick_to_pwm(axis_3),
+                axis_0,
+                axis_1,
+                axis_2,
+                axis_3
             }
             pwm_string = ','.join(map(str, pwm_values))
             client_socket.sendall(pwm_string.encode('utf-8'))
             
-            print(f"Axis 0: {axis_0_pwm_value}, Axis 1: {axis_1_pwm_value}, Axis 2: {axis_2_pwm_value}, Axis 3: {axis_3_pwm_value}")
+            print(f"Axis 0: {axis_0}, Axis 1: {axis_1}, Axis 2: {axis_2}, Axis 3: {axis_3}")
 
             time.sleep(0.1)
 
 
 pygame.quit()
 s.close()
+
+# joystick_to_pwm(axis_0),
+                # joystick_to_pwm(axis_1),
+                # joystick_to_pwm(axis_2),
+                # joystick_to_pwm(axis_3),
