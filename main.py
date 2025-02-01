@@ -77,8 +77,8 @@ while running:
                 joystick.get_axis(2),
                 joystick.get_axis(3)
             }
-            pwm_float = ','.join(map(float, pwm_values))
-            client_socket.sendall(pwm_float.encode('utf-8'))
+            pwm_string = (map(float, pwm_values))
+            client_socket.sendall(pwm_string.encode('utf-8'))
             
             print(f"Axis 0: {axis_0}, Axis 1: {axis_1}, Axis 2: {axis_2}, Axis 3: {axis_3}")
 
