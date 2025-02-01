@@ -85,9 +85,9 @@ while running:
             json_data = json.dumps(pwm_values)
             client_socket.sendall(json_data.encode('utf-8'))
             
-
-            print(json_data)
-            print(f"Axis 0: {axis_0_pwm_value}, Axis 1: {axis_1_pwm_value}, Axis 2: {axis_2_pwm_value}, Axis 3: {axis_3_pwm_value}")
+            print(f"Axis 0: {axis_0}, Axis 1: {axis_1}, Axis 2:{axis_2}, Axis 3: {axis_3}")
+            #print(json_data)
+            #print(f"Axis 0: {axis_0_pwm_value}, Axis 1: {axis_1_pwm_value}, Axis 2: {axis_2_pwm_value}, Axis 3: {axis_3_pwm_value}")
 
             time.sleep(0.1)
 
