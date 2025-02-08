@@ -41,12 +41,13 @@ def joystick_to_pwm(value):
     return int(pwm_value)
 
 def calculate_rotation_thrusters():
-    added_values = int(axis_1 + axis_2 + axis_3)
+    added_values = float(axis_1 + axis_2 + axis_3)
     print("x, y, and r:", added_values)
     # return(added_values)
 
-    if axis_1 == axis_2:
+    if float(axis_1 == -1 and axis_2 == 1):
         pass
+        
 
 
 
