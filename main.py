@@ -40,11 +40,8 @@ def joystick_to_pwm(value):
       
     return int(pwm_value)
 
-def calculate_thrusters(axis_1, axis_2, axis_3):
-    added_values = int(axis_1 + axis_2 + axis_3)
-    print(added_values)
-    return added_values
-
+def calculate_thrusters(added_values):
+    pass
 running = True
 while running:
     #client_socket, client_address = s.accept()
@@ -89,7 +86,10 @@ while running:
             json_data = json.dumps(pwm_values)
             client_socket.sendall(json_data.encode('utf-8'))
             
-            calculate_thrusters()
+            added_values = int(axis_1 + axis_2 + axis_3)
+            print(added_values)
+
+
             print(f"Axis 0: {axis_0}, Axis 1: {axis_1}, Axis 2:{axis_2}, Axis 3: {axis_3}")
             #print(json_data)
             print(f"Axis 0: {axis_0_pwm_value}, Axis 1: {axis_1_pwm_value}, Axis 2: {axis_2_pwm_value}, Axis 3: {axis_3_pwm_value}")
