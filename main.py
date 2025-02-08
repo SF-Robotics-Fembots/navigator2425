@@ -40,8 +40,9 @@ def joystick_to_pwm(value):
       
     return int(pwm_value)
 
-def calculate_rotation():
-    pass
+def calculate_thrusters(added_values):
+    added_values = int(axis_1 + axis_2 + axis_3)
+    return added_values
 
 running = True
 while running:
