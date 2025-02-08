@@ -87,7 +87,7 @@ while running:
             client_socket.sendall(json_data.encode('utf-8'))
             
             added_values = int(axis_1 + axis_2 + axis_3)
-            print("x, y, and r:"added_values)
+            print("x, y, and r:", added_values)
 
 
             print(f"Axis 0: {axis_0}, Axis 1: {axis_1}, Axis 2:{axis_2}, Axis 3: {axis_3}")
