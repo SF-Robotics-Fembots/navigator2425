@@ -89,6 +89,8 @@ while running:
             # axis_2_calculate = calculate_rotation_thrusters(axis_2)
             # print(f"Axis 0: {axis_0_calculate}, Axis 1: {axis_1_calculate}, Axis 2: {axis_2_calculate}")
 
+            calculate_rotation_thrusters()
+
             axis_0_pwm_value = joystick_to_pwm(axis_0)
             axis_1_pwm_value = joystick_to_pwm(axis_1)
             axis_2_pwm_value = joystick_to_pwm(axis_2)
