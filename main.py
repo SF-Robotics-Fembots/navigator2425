@@ -91,8 +91,7 @@ while running:
             added_values = int(axis_1 + axis_2 + axis_3)
             print("x, y, and r:", added_values)
             
-
-
+            
             axis_0_pwm_value = joystick_to_pwm(axis_0)
             axis_1_pwm_value = joystick_to_pwm(axis_1)
             axis_2_pwm_value = joystick_to_pwm(axis_2)
