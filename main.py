@@ -40,7 +40,7 @@ def joystick_to_pwm(value):
       
     return int(pwm_value)
 
-def calculate_rotation_thrusters():
+def calculate_rotation_thrusters(axis_0, axis_1, axis_2):
     #*50 or *100 then scale it after
     axis_0 = int((axis_0)*100)
     axis_1 = int((axis_1)*100)
