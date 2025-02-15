@@ -81,12 +81,12 @@ while running:
             added_values = int(axis_0_rotation + axis_2_rotation)
             print("x and r:", added_values)
 
-            if (added_values > 100):
+            if int(added_values > 100):
                 power_limit = added_values/(added_values/100)
                 print(power_limit)
-            elif (added_values < 100):
+            elif int(added_values < 100):
                 pass
-            elif (added_values == 100):
+            elif int(added_values == 100):
                 pass
             else:
                 print("something went wrong")
