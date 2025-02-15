@@ -75,11 +75,11 @@ while running:
             # axis_2_calculate = calculate_rotation_thrusters(axis_2)
             # print(f"Axis 0: {axis_0_calculate}, Axis 1: {axis_1_calculate}, Axis 2: {axis_2_calculate}")
 
-            # axis_0_rotation = int((axis_0)*100) 
-            # # axis_1_rotation = int((axis_1)*100)
-            # axis_2_rotation = int((axis_2)*100)
-            # added_values = int(axis_0_rotation + axis_2_rotation)
-            # print("x and r:", added_values)
+            axis_0_rotation = int((axis_0)*100) 
+            # axis_1_rotation = int((axis_1)*100)
+            axis_2_rotation = int((axis_2)*100)
+            added_values = int(axis_0_rotation + axis_2_rotation)
+            print("x and r:", added_values)
 
             # if (added_values > 100):
             #     power_limit = added_values/(added_values/100)
