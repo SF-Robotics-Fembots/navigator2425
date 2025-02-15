@@ -81,15 +81,15 @@ while running:
             added_values = int(axis_0_rotation + axis_2_rotation)
             print("x and r:", added_values)
 
-            if (added_values > 100):
-                power_limit = added_values/(added_values/100)
-                print(power_limit)
-            elif (added_values < 100):
-                pass
-            elif (added_values == 100):
-                pass
-            else:
-                print("something went wrong")
+            # if (added_values > 100):
+            #     power_limit = added_values/(added_values/100)
+            #     print(power_limit)
+            # elif (added_values < 100):
+            #     pass
+            # elif (added_values == 100):
+            #     pass
+            # else:
+            #     print("something went wrong")
 
             axis_0_pwm_value = joystick_to_pwm(axis_0)
             axis_1_pwm_value = joystick_to_pwm(axis_1)
@@ -116,7 +116,7 @@ while running:
             #print(json_data)
             print(f"PWM Values: Axis 0: {axis_0_pwm_value}, Axis 1: {axis_1_pwm_value}, Axis 2: {axis_2_pwm_value}, Axis 3: {axis_3_pwm_value}")
 
-            # time.sleep(0.005)
+            time.sleep(0.005)
 
 
 pygame.quit()
