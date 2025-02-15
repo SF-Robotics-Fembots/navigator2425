@@ -56,15 +56,15 @@ def calculate_rotation_thrusters():
 running = True
 while running:
     global axis_0, axis_1, axis_2
-    client_socket, client_address = s.accept()
-    message = str(input("enter your message here: "))
-    client_socket.sendall(message.encode('utf-8'))
+    # client_socket, client_address = s.accept()
+    # message = str(input("enter your message here: "))
+    # client_socket.sendall(message.encode('utf-8'))
 
-    msg = str(input("enter your message here: "))
-    msg = msg.encode()
-    print("input recieved")
-    s.send(msg)
-    print("message sent to client")
+    # msg = str(input("enter your message here: "))
+    # msg = msg.encode()
+    # print("input recieved")
+    # s.send(msg)
+    # print("message sent to client")
     
 
     for event in pygame.event.get():
