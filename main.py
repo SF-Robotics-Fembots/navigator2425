@@ -43,14 +43,7 @@ def calculate_rotation_thrusters():
     # return int(added_values)
     #*50 or *100 then scale it after
     
-    if int():
-        pass
-    elif int():
-        pass
-    elif int():
-        pass
-    else:
-        pass
+    pass
 #if dont get value for 0 move according to that
 
 running = True
@@ -66,7 +59,6 @@ while running:
     # s.send(msg)
     # print("message sent to client")
     
-
     for event in pygame.event.get():
         print("----")
         print(event)
@@ -84,10 +76,10 @@ while running:
             # print(f"Axis 0: {axis_0_calculate}, Axis 1: {axis_1_calculate}, Axis 2: {axis_2_calculate}")
 
             axis_0_rotation = int((axis_0)*100) 
-            axis_1_rotation = int((axis_1)*100)
+            # axis_1_rotation = int((axis_1)*100)
             axis_2_rotation = int((axis_2)*100)
-            added_values = int(axis_0_rotation + axis_1_rotation + axis_2_rotation)
-            print("x, y, and r:", added_values)
+            added_values = int(axis_0_rotation  + axis_2_rotation)
+            print("x and r:", added_values)
             
             axis_0_pwm_value = joystick_to_pwm(axis_0)
             axis_1_pwm_value = joystick_to_pwm(axis_1)
