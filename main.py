@@ -35,38 +35,36 @@ else:
 
 
 def joystick_to_pwm(value):
-    pwm_value = 1500 + (value * 500)
+    pwm_value = 1500 + (value * 500) #1000-2000
     pwm_value = max(1000, min(2000, pwm_value))
-      
     return int(pwm_value)
 
 def calculate_rotation_thrusters():
-    pass
     # return int(added_values)
     #*50 or *100 then scale it after
     
-    # if int(axis_1 == 0):
-    #     pass
-    # elif int(axis_2 == -1):
-    #     pass
-    # elif int(axis_2 == 1):
-    #     pass
-    # else:
-    #     pass
+    if int():
+        pass
+    elif int():
+        pass
+    elif int():
+        pass
+    else:
+        pass
 #if dont get value for 0 move according to that
 
 running = True
 while running:
     global axis_0, axis_1, axis_2
-    #client_socket, client_address = s.accept()
-    #message = str(input("enter your message here: "))
-    #client_socket.sendall(message.encode('utf-8'))
+    client_socket, client_address = s.accept()
+    message = str(input("enter your message here: "))
+    client_socket.sendall(message.encode('utf-8'))
 
-    # msg = str(input("enter your message here: "))
-    # msg = msg.encode()
-    # print("input recieved")
-    # s.send(msg)
-    # print("message sent to client")
+    msg = str(input("enter your message here: "))
+    msg = msg.encode()
+    print("input recieved")
+    s.send(msg)
+    print("message sent to client")
     
 
     for event in pygame.event.get():
@@ -85,12 +83,11 @@ while running:
             # axis_2_calculate = calculate_rotation_thrusters(axis_2)
             # print(f"Axis 0: {axis_0_calculate}, Axis 1: {axis_1_calculate}, Axis 2: {axis_2_calculate}")
 
-            axis_0 = int((axis_0)*100)
-            axis_1 = int((axis_1)*100)
-            axis_2 = int((axis_2)*100)
-            added_values = int(axis_1 + axis_2 + axis_3)
+            axis_0_rotation = int((axis_0)*100) 
+            axis_1_rotation = int((axis_1)*100)
+            axis_2_rotation = int((axis_2)*100)
+            added_values = int(axis_0_rotation + axis_1_rotation + axis_2_rotation)
             print("x, y, and r:", added_values)
-            
             
             axis_0_pwm_value = joystick_to_pwm(axis_0)
             axis_1_pwm_value = joystick_to_pwm(axis_1)
@@ -113,9 +110,9 @@ while running:
             client_socket.sendall(json_data.encode('utf-8'))
             
 
-            print(f"Axis 0: {axis_0}, Axis 1: {axis_1}, Axis 2:{axis_2}, Axis 3: {axis_3}")
+            print(f"Raw Values: Axis 0: {axis_0}, Axis 1: {axis_1}, Axis 2:{axis_2}, Axis 3: {axis_3}")
             #print(json_data)
-            print(f"Axis 0: {axis_0_pwm_value}, Axis 1: {axis_1_pwm_value}, Axis 2: {axis_2_pwm_value}, Axis 3: {axis_3_pwm_value}")
+            print(f"PWM Values: Axis 0: {axis_0_pwm_value}, Axis 1: {axis_1_pwm_value}, Axis 2: {axis_2_pwm_value}, Axis 3: {axis_3_pwm_value}")
 
             time.sleep(0.005)
 
