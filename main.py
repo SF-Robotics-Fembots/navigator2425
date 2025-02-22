@@ -110,12 +110,12 @@ while running:
             axis_r_pwm_value = joystick_to_pwm(axis_r)
             axis_z_pwm_value = joystick_to_pwm(axis_z)
 
-            print(f"Raw Values: Axis 0: {axis_x}, Axis 1: {axis_y}, Axis 2:{axis_r}, Axis 3: {axis_z}")
-            print(f"Thruster %:", thruster_percent_ideal)
-            print(f"Power Total:", power_total)
-            print(f"Final %:", final_percentage)
-            print(f"PWM Value Thrusters: ", thruster_pwm_values)
-            print(f"PWM Values: Axis 0: {axis_x_pwm_value}, Axis 1: {axis_r_pwm_value}, Axis 2: {axis_r_pwm_value}, Axis 3: {axis_z_pwm_value}")
+            # print(f"Raw Values: Axis 0: {axis_x}, Axis 1: {axis_y}, Axis 2:{axis_r}, Axis 3: {axis_z}")
+            # print(f"Thruster %:", thruster_percent_ideal)
+            # print(f"Power Total:", power_total)
+            # print(f"Final %:", final_percentage)
+            print(f"PWM Thruster Values: ", thruster_pwm_values)
+            # print(f"PWM Values: Axis 0: {axis_x_pwm_value}, Axis 1: {axis_r_pwm_value}, Axis 2: {axis_r_pwm_value}, Axis 3: {axis_z_pwm_value}")
 
             pwm_values = {
                 'x': axis_x_pwm_value,
