@@ -50,74 +50,39 @@ while running:
         if event.type == pygame.QUIT:
             running = False
         elif event.type == pygame.JOYAXISMOTION:
-            axis_0 = joystick.get_axis(0)
-            axis_1 = joystick.get_axis(1)
-            axis_2 = joystick.get_axis(2)
-            axis_3 = joystick.get_axis(3)
+            axis_x = joystick.get_axis(0)
+            axis_y = joystick.get_axis(1)
+            axis_r = joystick.get_axis(2)
+            axis_z = joystick.get_axis(3)
 
-            axis_0_rotation = int((axis_0)*100) 
-            axis_1_rotation = int((axis_1)*100)
-            axis_2_rotation = int((axis_2)*100)
-            axis_3_rotation = int((axis_3)*100)
+            axis_x_scale = int((axis_x)*100) 
+            axis_y_scale = int((axis_y)*100)
+            axis_r_scale = int((axis_r)*100)
+            axis_z_scale = int((axis_z)*100)
 
-            # joystick_values = [axis_0, axis_1, axis_2, axis_3]
+            thruster_5 = axis_z_scale
+            thruster_4 = axis_z_scale
+            thruster_3 = axis_y_scale
+            thruster_2 = axis_x_scale - axis_r_scale
+            thruster_1 = axis_x_scale + axis_r_scale
 
-            # thruster_1 = 1
-            # thruster_2 = 2
-            # thruster_3 = 3
-            # thruster_4 = 4
-            # thruster_5 = 5
+            thruster_percent_ideal = [thruster_5, thruster_4, thruster_3, thruster_2, thruster_1]
 
-            # thrusters = [thruster_1, thruster_2, thruster_3, thruster_4, thruster_5]
+            print(thruster_percent_ideal)
 
-            # rotation = 100/thrusters
+            axis_x_pwm_value = joystick_to_pwm(axis_x)
+            axis_y_pwm_value = joystick_to_pwm(axis_y)
+            axis_r_pwm_value = joystick_to_pwm(axis_r)
+            axis_z_pwm_value = joystick_to_pwm(axis_z)
 
-            # thruster_1_new = rotation * thruster_1
-            # thruster_2_new = rotation * thruster_2
-
-            # thrusters_percent_ideal = [thruster_1, thruster_2, thruster_3, thruster_4, thruster_5]
-
-            # thruster_1_b = 1
-            # thruster_2_b = 2
-            # thruster_3_b = 3
-            # thruster_4_b = 4
-            # thruster_5_b = 5
-
-            # thrusters_max_percent = [thruster_1_b, thruster_2_b, thruster_3_b, thruster_4_b, thruster_5_b]
-
-            # abs(thruster_1_b)
-            # abs(thruster_2_b)
-            # abs(thruster_3_b)
-            # abs(thruster_4_b)
-            # abs(thruster_5_b)
-
-            # added_values = int(axis_0_rotation + axis_2_rotation)
-            # print("x and r:", added_values)
-
-            # if int(added_values > 100 or added_values < 0):
-            #     power_limit = int(added_values/(added_values/100))
-            #     power_limit = max(100, min(-100, power_limit))
-            #     print(power_limit)
-            # elif int(added_values < 100):
-            #     print(added_values)
-            # elif int(added_values = 100):
-            #     print(added_values)
-            # else:
-            #     print("Something went wrong")
-
-            axis_0_pwm_value = joystick_to_pwm(axis_0)
-            axis_1_pwm_value = joystick_to_pwm(axis_1)
-            axis_2_pwm_value = joystick_to_pwm(axis_2)
-            axis_3_pwm_value = joystick_to_pwm(axis_3)
-
-            print(f"Raw Values: Axis 0: {axis_0}, Axis 1: {axis_1}, Axis 2:{axis_2}, Axis 3: {axis_3}")
-            print(f"PWM Values: Axis 0: {axis_0_pwm_value}, Axis 1: {axis_1_pwm_value}, Axis 2: {axis_2_pwm_value}, Axis 3: {axis_3_pwm_value}")
+            print(f"Raw Values: Axis 0: {axis_x}, Axis 1: {axis_y}, Axis 2:{axis_r}, Axis 3: {axis_z}")
+            print(f"PWM Values: Axis 0: {axis_x_pwm_value}, Axis 1: {axis_r_pwm_value}, Axis 2: {axis_r_pwm_value}, Axis 3: {axis_z_pwm_value}")
 
             pwm_values = {
-                'x': axis_0_pwm_value,
-                'y': axis_1_pwm_value,
-                'r': axis_2_pwm_value,
-                'v': axis_3_pwm_value
+                'x': axis_x_pwm_value,
+                'y': axis_y_pwm_value,
+                'r': axis_r_pwm_value,
+                'v': axis_z_pwm_value
             }
 
             json_data = json.dumps(pwm_values)
