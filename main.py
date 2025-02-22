@@ -127,13 +127,12 @@ while running:
             }
 
             thruster_values = {
-                    'thruster_1': thruster_1_b,
+                    'thruster_1': thruster_1_b(thruster_pwm_values),
                     'thruster_2': thruster_2_b,
                     'thruster_3': thruster_3_b,
                     'thruster_4': thruster_4_b,
                     'thruster_5': thruster_5_b
                 }
-            
             print(thruster_values)
 
             json_data = json.dumps(pwm_values)
