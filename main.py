@@ -88,7 +88,7 @@ while running:
                 new_thruster_2_b = thruster_2 * ratio
             else:
                 pass
-            print(thruster_1_b, thruster_2_b)
+            # print(thruster_1_b, thruster_2_b)
 
             thruster_percent_max = [thruster_5_b, thruster_4_b, thruster_3_b, thruster_2_b, thruster_1_b]
             
@@ -106,7 +106,7 @@ while running:
             final_percentage = [thruster_5_b, thruster_4_b, thruster_3_b, thruster_2_b, thruster_1_b]
 
             thruster_pwm_values = [joystick_to_pwms(percentage) for percentage in final_percentage]
-            
+
             axis_x_pwm_value = joystick_to_pwm(axis_x)
             axis_y_pwm_value = joystick_to_pwm(axis_y)
             axis_r_pwm_value = joystick_to_pwm(axis_r)
