@@ -70,6 +70,18 @@ while running:
 
             print(thruster_percent_ideal)
 
+            # thruster_5_b = thruster_5
+            # thruster_4_b = thruster_4
+            # thruster_3_b = thruster_3
+
+
+            # rotation = 100/thruster_1
+
+            # thruster_1_new = axis_r_scale * thruster_1
+            # thruster_2_new = axis_r_scale * thruster_2
+
+            # thruster_percent_max = []
+
             axis_x_pwm_value = joystick_to_pwm(axis_x)
             axis_y_pwm_value = joystick_to_pwm(axis_y)
             axis_r_pwm_value = joystick_to_pwm(axis_r)
