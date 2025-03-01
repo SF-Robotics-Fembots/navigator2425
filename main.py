@@ -108,11 +108,11 @@ while running:
             thruster_percent_max = [thruster_5_b, thruster_4_b, thruster_3_b, thruster_2_b, thruster_1_b]
             print("Thruster Percent Max: ", thruster_percent_max)
 
-            thruster_5_b = abs(thruster_5_b)
-            thruster_4_b = abs(thruster_4_b)
-            thruster_3_b = abs(thruster_3_b)
-            thruster_2_b = abs(thruster_2_b)
-            thruster_1_b = abs(thruster_1_b)
+            # thruster_5_b = abs(thruster_5_b)
+            # thruster_4_b = abs(thruster_4_b)
+            # thruster_3_b = abs(thruster_3_b)
+            # thruster_2_b = abs(thruster_2_b)
+            # thruster_1_b = abs(thruster_1_b)
             
             print("Thruster_#_B: ", thruster_5_b, thruster_4_b, thruster_3_b, thruster_2_b, thruster_1_b)
 
