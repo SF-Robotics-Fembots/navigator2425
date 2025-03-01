@@ -81,9 +81,9 @@ while running:
 
             thruster_5 = axis_z_scale
             thruster_4 = axis_z_scale
-            thruster_3 = axis_y_scale
-            thruster_2 = axis_x_scale - axis_r_scale
-            thruster_1 = axis_x_scale + axis_r_scale
+            thruster_3 = axis_x_scale
+            thruster_2 = axis_y_scale - axis_r_scale
+            thruster_1 = axis_y_scale + axis_r_scale
 
             thruster_percent_ideal = [thruster_5, thruster_4, thruster_3, thruster_2, thruster_1]
             print("Thruster Percent Ideal;", thruster_percent_ideal)
