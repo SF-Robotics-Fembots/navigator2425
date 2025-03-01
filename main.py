@@ -10,7 +10,7 @@ print ("Socket successfully created")
 host_ip = '10.0.0.87'
 port = 8080
 
-s.bind((host_ip, port))
+s.bind(('', port))
 s.listen(1)
 client_socket, client_address = s.accept()
 print ("Socket successfully connected")
