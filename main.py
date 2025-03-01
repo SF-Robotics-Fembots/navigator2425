@@ -86,7 +86,7 @@ while running:
             thruster_1 = axis_x_scale + axis_r_scale
 
             thruster_percent_ideal = [thruster_5, thruster_4, thruster_3, thruster_2, thruster_1]
-            print(thruster_percent_ideal)
+            print("Thruster Percent Ideal;", thruster_percent_ideal)
 
             #if the thruster values are less than 100, then it will pass the if statment
 
@@ -97,7 +97,7 @@ while running:
             else:
                 new_thruster_1_b = thruster_1
                 new_thruster_2_b = thruster_2
-                print(new_thruster_1_b, new_thruster_2_b)
+                print("New 1&2 Thruster B: ", new_thruster_1_b, new_thruster_2_b)
 
             thruster_5_b = thruster_5
             thruster_4_b = thruster_4
@@ -106,7 +106,7 @@ while running:
             thruster_1_b = new_thruster_1_b
 
             thruster_percent_max = [thruster_5_b, thruster_4_b, thruster_3_b, thruster_2_b, thruster_1_b]
-            print(thruster_percent_max)
+            print("Thruster Percent Max: ", thruster_percent_max)
 
             thruster_5_b = abs(thruster_5_b)
             thruster_4_b = abs(thruster_4_b)
@@ -114,17 +114,17 @@ while running:
             thruster_2_b = abs(thruster_2_b)
             thruster_1_b = abs(thruster_1_b)
             
-            print(thruster_5_b, thruster_4_b, thruster_3_b, thruster_2_b, thruster_1_b)
+            print("Thruster_#_B: ", thruster_5_b, thruster_4_b, thruster_3_b, thruster_2_b, thruster_1_b)
 
-            power_total = thruster_5_b + thruster_4_b + thruster_3_b + thruster_2_b + thruster_1_b
-            print("...", power_total)
+            # power_total = thruster_5_b + thruster_4_b + thruster_3_b + thruster_2_b + thruster_1_b
+            # print("...", power_total)
             
-            power_totals = sum(abs(num) for num in thruster_percent_max) #taking absolute value of each thruster and adding it together to get total amount of power
-            print("___", power_totals)
+            power_total = sum(abs(num) for num in thruster_percent_max) #taking absolute value of each thruster and adding it together to get total amount of power
+            print("Power Total: ", power_total)
 
             power_max = 800 #max amount of power we can use (percentage) ex: 800% (mr. grindstaff) test 250
             power_ratio = power_max/power_total
-            print(power_ratio)
+            print("Power Ratio: ", power_ratio)
 
             thruster_5_c = thruster_5_b * power_ratio
             thruster_4_c = thruster_4_b * power_ratio
@@ -133,13 +133,13 @@ while running:
             thruster_1_c = thruster_1_b * power_ratio
 
             final_percentage = [thruster_5_c, thruster_4_c, thruster_3_c, thruster_2_c, thruster_1_c]
-            print(final_percentage)
+            print("Final Percentage: ", final_percentage)
 
             thruster_pwm_values = [joystick_to_pwms(percentage) for percentage in final_percentage]
-            print(thruster_pwm_values)
+            print("Thruster PWM Values: ", thruster_pwm_values)
 
             thruster_values = [joystick_to_pwms(thruster_5_c), joystick_to_pwms(thruster_4_c), joystick_to_pwms(thruster_3_c), joystick_to_pwms(thruster_2_c), joystick_to_pwms(thruster_1_c)]
-            print(thruster_values)
+            print("Thruster Values: ", thruster_values)
 
             # print(f"Raw Values: Axis 0: {axis_x}, Axis 1: {axis_y}, Axis 2:{axis_r}, Axis 3: {axis_z}")
             # print(f"Thruster %:", thruster_percent_ideal)
