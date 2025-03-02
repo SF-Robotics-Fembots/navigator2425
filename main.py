@@ -10,7 +10,7 @@ print ("Socket successfully created")
 host_ip = '10.0.0.87'
 port = 8080
 
-s.bind(('', port))
+s.bind(('', port)) #host_ip
 s.listen(1)
 client_socket, client_address = s.accept()
 print ("Socket successfully connected")
@@ -97,7 +97,7 @@ while running:
             else:
                 new_thruster_1_b = thruster_1
                 new_thruster_2_b = thruster_2
-                print("New 1&2 Thruster B: ", new_thruster_1_b, new_thruster_2_b)
+                print("New Thruster 1 and 2 B: ", new_thruster_1_b, new_thruster_2_b)
 
             thruster_5_b = thruster_5
             thruster_4_b = thruster_4
