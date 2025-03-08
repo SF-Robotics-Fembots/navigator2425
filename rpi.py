@@ -12,22 +12,33 @@ print("1")
 #data = s.recv(1024)
 #print(f"recieved message: ")
 
-servoPIN = 15
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(servoPIN, GPIO.OUT)
-p = GPIO.PWM(servoPIN, 100)
+thruster_5 = 0
+thruster_4 = 0
+thruster_3 = 0
+thruster_2 = 0
+thruster_1 = 0
 
-def get_pwm_value():
-        # try:
-        SERVER_URL = ""
-        response = requests.get(SERVER_URL)
-        response.raise_for_status()
-        # pwm_value = response.json().get('pwm_values')
-        # if 1000 <= pwm_value <= 2000:
-        #     return pwm_value
-        # else:
-        #     print("PWM value out of range")
-        #     return None
+servoPIN = [14, 1, 8, 15, 0]
+GPIO.setmode(GPIO.BCM)
+for pin in servoPIN:
+    GPIO.setup(servoPIN, GPIO.OUT)
+p = GPIO.PWM(servoPIN, 100) #100 Hz frequency
+
+# def set_thrusters_pwms(pwm_values):
+#     for thruster, pwm_value in zip(thrusters, pwm_values):
+#         thruster.ChangeDutyCycle(pwm_value)
+
+# def get_pwm_value():
+#         try:
+#         SERVER_URL = ""
+#         response = requests.get(SERVER_URL)
+#         response.raise_for_status()
+#         pwm_value = response.json().get('pwm_values')
+#         if 1000 <= pwm_value <= 2000:
+#             return pwm_value
+#         else:
+#             print("PWM value out of range")
+#             return None
 
 
 p.start(2.5) # Initialization
@@ -49,6 +60,14 @@ while True:
     # pwm_string = data.decode('utf-8')
     # pwm_values = list(map(float, pwm_string.split(',')))
     print("received pwm values:", pwm_values)
+
+
+
+    thrusters = [thruster_5, thruster_4, thruster_3, thruster_2, thruster_1]
+
+    for thruster in thrusters:
+        pass
+         #thruster = ___ 
     
     
     try:

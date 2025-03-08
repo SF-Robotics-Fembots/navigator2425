@@ -79,11 +79,11 @@ while running:
             axis_z_scale = int((axis_z)*100)
             print(f"Scale Values: Axis X: {axis_x_scale}, Axis Y: {axis_y_scale}, Axis R:{axis_r_scale}, Axis Z: {axis_z_scale}")
 
-            thruster_5 = axis_z_scale
-            thruster_4 = axis_z_scale
-            thruster_3 = axis_x_scale
-            thruster_2 = axis_y_scale - axis_r_scale
-            thruster_1 = axis_y_scale + axis_r_scale
+            thruster_5 = axis_z_scale #left vertical
+            thruster_4 = axis_z_scale #right vertical
+            thruster_3 = axis_x_scale #middle
+            thruster_2 = axis_y_scale - axis_r_scale #left horizontal
+            thruster_1 = axis_y_scale + axis_r_scale #right horizontal
 
             thruster_percent_ideal = [thruster_5, thruster_4, thruster_3, thruster_2, thruster_1]
             print("Thruster Percent Ideal;", thruster_percent_ideal)
