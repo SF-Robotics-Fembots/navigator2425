@@ -61,10 +61,10 @@ while running:
         if event.type == pygame.QUIT:
             running = False
         elif event.type == pygame.JOYAXISMOTION:
-            axis_x = joystick.get_axis(0)
-            axis_y = joystick.get_axis(1)
-            axis_r = joystick.get_axis(2)
-            axis_z = joystick.get_axis(3)
+            axis_x = joystick.get_axis(0) #left and right
+            axis_y = joystick.get_axis(1) #forward and back
+            axis_r = joystick.get_axis(2) #rotation (yaw)
+            axis_z = joystick.get_axis(3) #vertical (up and down)
             print(f"Raw Values: Axis x: {axis_x}, Axis y: {axis_y}, Axis r:{axis_r}, Axis z: {axis_z}")
 
             axis_x = apply_dead_zones(axis_x, dead_zone)
