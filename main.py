@@ -74,7 +74,7 @@ while running:
             print(f"Dead Zone: Axis X: {axis_x}, Axis Y: {axis_y}, Axis R:{axis_r}, Axis Z: {axis_z}")
 
             axis_x_scale = int((axis_x)*100) 
-            axis_y_scale = int((axis_y)*100)
+            axis_y_scale = int((axis_y)*-100)
             axis_r_scale = int((axis_r)*100)
             axis_z_scale = int((axis_z)*100)
             print(f"Scale Values: Axis X: {axis_x_scale}, Axis Y: {axis_y_scale}, Axis R:{axis_r_scale}, Axis Z: {axis_z_scale}")
