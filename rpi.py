@@ -18,8 +18,11 @@ thrusters = [thruster_5, thruster_4, thruster_3, thruster_2, thruster_1]
 
 servoPIN = [14, 1, 8, 15, 0] #define GPIO pins for thrusters
 GPIO.setmode(GPIO.BCM) #initialize GPIO
-GPIO.setup(servoPIN, GPIO.OUT)
-p = GPIO.PWM(servoPIN, 100) #100 Hz frequency
+for pin in servoPIN:
+    GPIO.setup(pin, GPIO.OUT)
+pwm_objects = [GPIO.PWM(pin, 100) for pin in servoPIN] #100 Hz frequency
+for pwm in pwm_objects:
+    pwm_objects.start(2.5) # Initialization
 
 def set_thrusters(thruster, pin):
     print(f"Setting Pin: {pin} to Thruster: {thruster}")
@@ -29,7 +32,6 @@ def set_thrusters(thruster, pin):
 #         thruster.ChangeDutyCycle(pwm_value)
 # set_thrusters_pwms(pwm_values, thrusters)
 
-p.start(2.5) # Initialization
 datain = client_socket.recv(1024)
 client_socket.setblocking(False)
 while True:
@@ -49,14 +51,13 @@ while True:
 
     for thruster, pin in zip(thrusters, servoPIN):
         set_thrusters(thruster, pin)
-        
          #thruster = ___ 
     
     
     try:
         time.sleep(0.005)
     except KeyboardInterrupt:
-        p.stop()
+        pwm_objects.stop()
         #figure out how to exit porgram with command
     except:
         GPIO.cleanup()
