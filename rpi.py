@@ -16,13 +16,46 @@ thruster_2 = 0
 thruster_1 = 0
 thrusters = [thruster_5, thruster_4, thruster_3, thruster_2, thruster_1]
 
-servoPIN = [14, 1, 8, 15, 0] #define GPIO pins for thrusters
-GPIO.setmode(GPIO.BCM) #initialize GPIO
-for pin in servoPIN:
-    GPIO.setup(pin, GPIO.OUT)
-pwm_objects = [GPIO.PWM(pin, 100) for pin in servoPIN] #100 Hz frequency
-for pwm in pwm_objects:
-    pwm_objects.start(2.5) # Initialization
+# servoPIN = [14, 1, 8, 15, 0] #define GPIO pins for thrusters
+# GPIO.setmode(GPIO.BCM) #initialize GPIO
+# for pin in servoPIN:
+#     GPIO.setup(pin, GPIO.OUT)
+# pwm_objects = [GPIO.PWM(pin, 100) for pin in servoPIN] #100 Hz frequency
+# for pwm in pwm_objects:
+#     pwm_objects.start(2.5) # Initialization
+
+servoPIN_5 = 14
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(servoPIN_5, GPIO.OUT)
+p = GPIO.PWM(servoPIN_5, 100)
+p.start(2.5)
+
+servoPIN_4 = 1
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(servoPIN_4, GPIO.OUT)
+p = GPIO.PWM(servoPIN_4, 100)
+p.start(2.5)
+
+servoPIN_3 = 8
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(servoPIN_3, GPIO.OUT)
+p = GPIO.PWM(servoPIN_3, 100)
+p.start(2.5)
+
+servoPIN_2 = 15
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(servoPIN_2, GPIO.OUT)
+p = GPIO.PWM(servoPIN_2, 100)
+p.start(2.5)
+
+servoPIN_1 = 0
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(servoPIN_1, GPIO.OUT)
+p = GPIO.PWM(servoPIN_1, 100)
+p.start(2.5)
+
+servoPINS = []
+
 
 def set_thrusters(thruster, pin):
     print(f"Setting Pin: {pin} to Thruster: {thruster}")
@@ -49,15 +82,14 @@ while True:
     pwm_values = json.loads(json_data)
     print("received pwm values:", pwm_values)
 
-    for thruster, pin in zip(thrusters, servoPIN):
-        set_thrusters(thruster, pin)
-         #thruster = ___ 
-    
+    # for thruster, pin in zip(thrusters, servoPIN):
+    #     set_thrusters(thruster, pin)
+    #      #thruster = ___ 
     
     try:
         time.sleep(0.005)
     except KeyboardInterrupt:
-        pwm_objects.stop()
+        p.stop()
         #figure out how to exit porgram with command
     except:
         GPIO.cleanup()
