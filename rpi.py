@@ -1,4 +1,5 @@
-import socket, time, json, Adafruit_PWMServo #Adafruit-PCA9685
+import socket, time, json
+from adafruit_pca9685 import PCA968
 import RPi.GPIO as GPIO # type: ignore
 
 host_ip = '10.0.0.8'
