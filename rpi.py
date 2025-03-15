@@ -1,7 +1,7 @@
 import socket, time, json
 #from adafruit_pca9685 import PCA9568
 import adafruit_pca968
-import pwm.io
+import pwmio
 import RPi.GPIO as GPIO # type: ignore
 
 host_ip = '10.0.0.8'
