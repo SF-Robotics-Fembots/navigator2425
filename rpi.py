@@ -62,7 +62,7 @@ thrusters = [thruster_5, thruster_4, thruster_3, thruster_2, thruster_1]
 i2c = busio.I2C(board.SCL, board.SDA)
 print(i2c)
 #i2c = board.I2C() # uses board.SCL and board.SDA
-shield = Adafruit_PCA9685(i2c)
+shield = Adafruit_PCA9685.PCA9685(i2c)
 kit = ServoKit(channels=16)
 shield.frequency = 100
 
