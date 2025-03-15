@@ -2,7 +2,7 @@ import board
 import busio
 import pwmio
 import RPi.GPIO as GPIO # type: ignore
-import Adafruit_PCA9685 #import PCA9685
+import adafruit_pca9685 #import PCA9685
 from adafruit_servokit import ServoKit
 import socket, time, json, sys
 
