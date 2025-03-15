@@ -1,5 +1,5 @@
-import socket, time, json, pygame, sys
-import adafruit_pca968
+import socket, time, json, sys
+import adafruit_pca9685
 import board
 import busio
 import pwmio
