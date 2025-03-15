@@ -1,4 +1,4 @@
-import socket, time, json, pygame
+import socket, time, json, pygame, sys
 import adafruit_pca968
 import board
 import busio
@@ -122,7 +122,8 @@ while True:
     try:
         time.sleep(0.005)
     except KeyboardInterrupt:
-        p.stop()
+        sys.exit()
+        # p.stop()
         #figure out how to exit porgram with command
     except:
         GPIO.cleanup()
