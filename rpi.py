@@ -82,13 +82,13 @@ while True:
     while True:
         try:
             datain = (client_socket.recv(1024)).decode() #client_socket.recv(1024)
-            print("DI", datain)
+            #print("DI", datain)
         except BlockingIOError:
             # if len(datain) < 5: break
             data = datain[-30:] #orignially -44 for pwm_values
             break
     #if not data: break
-    print("D", data)
+    #print("D", data)
     #json_data = data.decode('utf-8')
     pwm_values = json.loads(data)
     print("received pwm values:", pwm_values)
