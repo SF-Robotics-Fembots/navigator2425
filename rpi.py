@@ -73,7 +73,7 @@ thrusterChannel5 = shield.channels[14]
 thrusterChannel4 = shield.channels[1]
 thrusterChannel3 = shield.channels[8]
 thrusterChannel2 = shield.channels[15]
-thrusterChannel1 = shield.channels[2]
+thrusterChannel1 = shield.channels[0]
 thrusterChannel5.duty_cycle = 0x2666
 
 datain = client_socket.recv(1024)
