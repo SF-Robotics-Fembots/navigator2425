@@ -93,19 +93,19 @@ while True:
     pwm_values = json.loads(data)
     print("received pwm values:", pwm_values)
 
-    throttlePW = int((pwm_values[0]/10000*65536))
+    throttlePW = int((pwm_values[0]/10000*65536)*(98/100))
     thrusterChannel5.duty_cycle = throttlePW
     time.sleep(0)
 
-    throttlePW = int((pwm_values[1]/10000*65536))
+    throttlePW = int((pwm_values[1]/10000*65536)*(98/100))
     thrusterChannel4.duty_cycle = throttlePW
     time.sleep(0)
 
-    throttlePW = int((pwm_values[2]/10000*65536))
+    throttlePW = int((pwm_values[2]/10000*65536)*(98/100))
     thrusterChannel3.duty_cycle = throttlePW
     time.sleep(0)
 
-    throttlePW = int((pwm_values[3]/10000*65536))
+    throttlePW = int((pwm_values[3]/10000*65536)*(98/100))
     thrusterChannel2.duty_cycle = throttlePW
     time.sleep(0)
 
