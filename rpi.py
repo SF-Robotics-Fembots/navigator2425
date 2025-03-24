@@ -67,7 +67,7 @@ print(listofdev)
 i2c = board.I2C() # uses board.SCL and board.SDA
 shield = adafruit_pca9685.PCA9685(i2c)
 kit = ServoKit(channels=16)
-shield.frequency = 100
+shield.frequency = 98 #was 10
 
 thrusterChannel5 = shield.channels[14]
 thrusterChannel4 = shield.channels[1]
