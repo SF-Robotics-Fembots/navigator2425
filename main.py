@@ -164,7 +164,7 @@ while running:
             json_data = json.dumps(thruster_values)
             client_socket.sendall(json_data.encode('utf-8'))
 
-            time.sleep(0.005)
+            time.sleep(0.05)
 
 
 pygame.quit()
