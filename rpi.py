@@ -67,7 +67,7 @@ print(listofdev)
 i2c = board.I2C() # uses board.SCL and board.SDA
 shield = adafruit_pca9685.PCA9685(i2c)
 kit = ServoKit(channels=16)
-shield.frequency = 98 #was 10
+shield.frequency = 98 #was 100
 
 thrusterChannel5 = shield.channels[14]
 thrusterChannel4 = shield.channels[1]
@@ -93,19 +93,19 @@ while True:
     pwm_values = json.loads(data)
     print("received pwm values:", pwm_values)
 
-    throttlePW = int(pwm_values[0]/10000*65536)
+    throttlePW = int(pwm_values[0]/10000*65536)*(98/100)
     thrusterChannel5.duty_cycle = throttlePW
     time.sleep(0)
 
-    throttlePW = int(pwm_values[1]/10000*65536)
+    throttlePW = int(pwm_values[1]/10000*65536)*(98/100)
     thrusterChannel4.duty_cycle = throttlePW
     time.sleep(0)
 
-    throttlePW = int(pwm_values[2]/10000*65536)
+    throttlePW = int(pwm_values[2]/10000*65536)*(98/100)
     thrusterChannel3.duty_cycle = throttlePW
     time.sleep(0)
 
-    throttlePW = int(pwm_values[3]/10000*65536)
+    throttlePW = int(pwm_values[3]/10000*65536)*(98/100)
     thrusterChannel2.duty_cycle = throttlePW
     time.sleep(0)
 
