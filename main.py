@@ -4,16 +4,16 @@ import time, json
 #this code actually works so far (convert joystick values to pwm)
 #this code works (sending and recieving messages back and forth)
 
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
-print ("Socket successfully created")
+# s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
+# print ("Socket successfully created")
 
-host_ip = '192.168.1.68'#'10.0.0.87'
-port = 8080
+# host_ip = '192.168.1.68'#'10.0.0.87'
+# port = 8080
 
-s.bind(('', port)) #host_ip
-s.listen(1)
-client_socket, client_address = s.accept()
-print ("Socket successfully connected")
+# s.bind(('', port)) #host_ip
+# s.listen(1)
+# client_socket, client_address = s.accept()
+# print ("Socket successfully connected")
 
 try:
     pygame.init()
@@ -66,7 +66,6 @@ while running:
             axis_r = joystick.get_axis(2) #rotation (yaw)
             axis_z = joystick.get_axis(3) #vertical (up and down)
             print(f"Raw Values: Axis x: {axis_x}, Axis y: {axis_y}, Axis r:{axis_r}, Axis z: {axis_z}")
-            axis = [axis_x, axis_y, axis_r, axis_z]
 
             #slow mode
             #button on joystick that if the toggle is pressed first - slow mode, second - back to normal
@@ -83,6 +82,7 @@ while running:
             current_mode_ratio = fast_mode_ratio
             previous_button_state = 0
             button_12 = joystick.get_button(11)
+            print(button_12)
             if button_12 == 1 and previous_button_state == 0:
                 if current_mode_ratio == fast_mode_ratio:
                     current_mode_ratio = slow_mode_ratio
@@ -101,6 +101,7 @@ while running:
             axis_y *= current_mode_ratio
             axis_r *= current_mode_ratio
             axis_z *= current_mode_ratio
+            print(f"Current Mode: Axis X: {axis_x}, Axis Y: {axis_y}, Axis R:{axis_r}, Axis Z: {axis_z}")
 
             axis_x_scale = int((axis_x)*100) 
             axis_y_scale = int((axis_y)*-100)
@@ -190,13 +191,13 @@ while running:
             # print(thruster_values)
 
             json_data = json.dumps(thruster_values)
-            client_socket.sendall(json_data.encode('utf-8'))
+            #client_socket.sendall(json_data.encode('utf-8'))
 
             time.sleep(0.001)
 
 
 pygame.quit()
-client_socket.close()
+#client_socket.close()
 
 # axis_x_pwm_value = joystick_to_pwm(axis_x)
 # axis_y_pwm_value = joystick_to_pwm(axis_y)
