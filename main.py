@@ -128,7 +128,7 @@ while running:
             axis_y_scale = int((axis_y)*-100)
             axis_r_scale = int((axis_r)*-100)
             axis_z_scale = int((axis_z)*-100) #flip verticals
-            print(f"Scale Values: Axis X: {axis_x_scale}, Axis Y: {axis_y_scale}, Axis R:{axis_r_scale}, Axis Z: {axis_z_scale}")
+            #print(f"Scale Values: Axis X: {axis_x_scale}, Axis Y: {axis_y_scale}, Axis R:{axis_r_scale}, Axis Z: {axis_z_scale}")
 
             thruster_5 = axis_z_scale #left vertical
             thruster_4 = axis_z_scale #right vertical
@@ -137,7 +137,7 @@ while running:
             thruster_1 = axis_y_scale + axis_r_scale #right horizontal
 
             thruster_percent_ideal = [thruster_5, thruster_4, thruster_3, thruster_2, thruster_1]
-            print("Thruster Percent Ideal;", thruster_percent_ideal)
+            #print("Thruster Percent Ideal;", thruster_percent_ideal)
 
             #if the thruster values are less than 100, then it will pass the if statment
 
@@ -158,7 +158,7 @@ while running:
             thruster_1_b = new_thruster_1_b
 
             thruster_percent_max = [thruster_5_b, thruster_4_b, thruster_3_b, thruster_2_b, thruster_1_b]
-            print("Thruster Percent Max: ", thruster_percent_max)
+            #print("Thruster Percent Max: ", thruster_percent_max)
 
             # thruster_5_b = abs(thruster_5_b)
             # thruster_4_b = abs(thruster_4_b)
@@ -190,10 +190,10 @@ while running:
             print("Final Percentage: ", final_percentage)
 
             thruster_pwm_values = [joystick_to_pwms(percentage) for percentage in final_percentage]
-            print("Thruster PWM Values: ", thruster_pwm_values)
+            #print("Thruster PWM Values: ", thruster_pwm_values)
 
             thruster_values = [joystick_to_pwms(thruster_5_c), joystick_to_pwms(thruster_4_c), joystick_to_pwms(thruster_3_c), joystick_to_pwms(thruster_2_c), joystick_to_pwms(thruster_1_c)]
-            print("Thruster Values: ", thruster_values)
+            #print("Thruster Values: ", thruster_values)
 
             # print(f"Raw Values: Axis 0: {axis_x}, Axis 1: {axis_y}, Axis 2:{axis_r}, Axis 3: {axis_z}")
             # print(f"Thruster %:", thruster_percent_ideal)
