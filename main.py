@@ -52,6 +52,7 @@ def joystick_to_pwms(value):
 
 #*50 or *100 then scale it after
 #if dont get value for 0 move according to that
+slow_speed = 0
 
 running = True
 while running:
@@ -60,6 +61,9 @@ while running:
         print("...")
         if event.type == pygame.QUIT:
             running = False
+        elif event.type == pygame.JOYBUTTONDOWN:
+            button_12 = joystick.get_button(11)
+            print(button_12)
         elif event.type == pygame.JOYAXISMOTION:
             axis_x = joystick.get_axis(0) #left and right
             axis_y = joystick.get_axis(1) #forward and back
@@ -78,18 +82,32 @@ while running:
             # make it as a variable (slow down ratio)
             #rotate might need a bigger reduction
             slow_mode_ratio = 0.5
-            fast_mode_ratio = 1.0
-            current_mode_ratio = fast_mode_ratio
-            previous_button_state = 0
-            button_12 = joystick.get_button(11)
-            print(button_12)
-            if button_12 == 1 and previous_button_state == 0:
-                if current_mode_ratio == fast_mode_ratio:
-                    current_mode_ratio = slow_mode_ratio
-                else:
-                    current_mode_ratio = fast_mode_ratio
+            # fast_mode_ratio = 1.0
+            # current_mode_ratio = fast_mode_ratio
+            # previous_button_state = 0
+            # button_12 = joystick.get_button(11)
+            # print(button_12)
+            # if button_12 == 1 and previous_button_state == 0:
+            #     if current_mode_ratio == fast_mode_ratio:
+            #         current_mode_ratio = slow_mode_ratio
+            #     else:
+            #         current_mode_ratio = fast_mode_ratio
             
-            previous_button_state = button_12
+            # previous_button_state = button_12
+            if pygame.joystick.Joystick(0).get_button(12): slow_speed = 0
+            if pygame.joystick.Joystick(0).get_button(12): slow_speed = 1
+
+            x_speed = (pygame.joystick.Joystick(0).get_axis(0))
+            if slow_speed: x_speed = x_speed*slow_mode_ratio
+
+            y_speed = (pygame.joystick.Joystick(0).get_axis(1))
+            if slow_speed: y_speed = y_speed*slow_mode_ratio
+
+            r_speed = (pygame.joystick.Joystick(0).get_axis(2))
+            if slow_speed: r_speed = r_speed*slow_mode_ratio
+
+            z_speed = (pygame.joystick.Joystick(0).get_axis(3))
+            if slow_speed: z_speed = z_speed*slow_mode_ratio             
         
             axis_x = apply_dead_zones(axis_x, dead_zone)
             axis_y = apply_dead_zones(axis_y, dead_zone)
@@ -97,11 +115,11 @@ while running:
             # axis_z = apply_dead_zones(axis_z, dead_zone)
             print(f"Dead Zone: Axis X: {axis_x}, Axis Y: {axis_y}, Axis R:{axis_r}, Axis Z: {axis_z}")
 
-            axis_x *= current_mode_ratio
-            axis_y *= current_mode_ratio
-            axis_r *= current_mode_ratio
-            axis_z *= current_mode_ratio
-            print(f"Current Mode: Axis X: {axis_x}, Axis Y: {axis_y}, Axis R:{axis_r}, Axis Z: {axis_z}")
+            # axis_x *= current_mode_ratio
+            # axis_y *= current_mode_ratio
+            # axis_r *= current_mode_ratio
+            # axis_z *= current_mode_ratio
+            # print(f"Current Mode: Axis X: {axis_x}, Axis Y: {axis_y}, Axis R:{axis_r}, Axis Z: {axis_z}")
 
             axis_x_scale = int((axis_x)*100) 
             axis_y_scale = int((axis_y)*-100)
