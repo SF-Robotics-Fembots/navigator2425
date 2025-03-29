@@ -53,6 +53,7 @@ def joystick_to_pwms(value):
 #*50 or *100 then scale it after
 #if dont get value for 0 move according to that
 slow_speed = 0
+slow_mode_ratio = 0.5
 
 running = True
 while running:
@@ -81,7 +82,7 @@ while running:
             # everything is same for x,y,z,r
             # make it as a variable (slow down ratio)
             #rotate might need a bigger reduction
-            slow_mode_ratio = 0.5
+            
             # fast_mode_ratio = 1.0
             # current_mode_ratio = fast_mode_ratio
             # previous_button_state = 0
