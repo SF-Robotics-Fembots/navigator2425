@@ -1,7 +1,7 @@
 import pygame
 import socket
 import time, json
-#from pynput import keyboard
+from pynput import keyboard
 #this code actually works so far (convert joystick values to pwm)
 #this code works (sending and recieving messages back and forth)
 
@@ -217,22 +217,41 @@ while running:
             time.sleep(0.001)
 
 #make disable thrusters button
+ctrl_pressed = False
+custom_key_pressed = False
 
+def on_press(key):
+    global ctrl_pressed, custom_key_pressed
+
+    try:
+        if key == keyboard.Key.ctrl_l or key == keyboard.Key.ctrl_r:
+            ctrl_pressed = True
+        elif key.char == '1500':
+            custom_key_pressed = True
+
+        if ctrl_pressed and custom_key_pressed:
+            disable_thrusters()
+
+    except AttributeError:
+        pass
+
+def on_release(key):
+    global ctrl_pressed, custom_key_pressed
+
+    try:
+        if key == keyboard.Key.ctrl_l or key == keyboard.Key.ctrl_r:
+            ctrl_pressed = False
+        elif key.char == '1500':
+            custom_key_pressed = False
+
+    except AttributeError:
+        pass
+
+def disable_thrusters():
+    print("Thrusters disabled!")
+
+with keyboard.Listener(on_press=on_press, on_release=on_release) as listener:
+    listener.join()
 
 pygame.quit()
 client_socket.close()
-
-# axis_x_pwm_value = joystick_to_pwm(axis_x)
-# axis_y_pwm_value = joystick_to_pwm(axis_y)
-# axis_r_pwm_value = joystick_to_pwm(axis_r)
-# axis_z_pwm_value = joystick_to_pwm(axis_z)
-
-# pwm_values = {
-#     'x': axis_x_pwm_value,
-#     'y': axis_y_pwm_value,
-#     'r': axis_r_pwm_value,
-#     'v': axis_z_pwm_value
-# }
-
-# json_data = json.dumps(pwm_values)
-# client_socket.sendall(json_data.encode('utf-8'))
