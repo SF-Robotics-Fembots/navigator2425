@@ -4,16 +4,16 @@ import time, json
 #this code actually works so far (convert joystick values to pwm)
 #this code works (sending and recieving messages back and forth)
 
-# s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
-# print ("Socket successfully created")
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
+print ("Socket successfully created")
 
-# host_ip = '192.168.1.68'#'10.0.0.87'
-# port = 8080
+host_ip = '192.168.1.68'#'10.0.0.87'
+port = 8080
 
-# s.bind(('', port)) #host_ip
-# s.listen(1)
-# client_socket, client_address = s.accept()
-# print ("Socket successfully connected")
+s.bind(('', port)) #host_ip
+s.listen(1)
+client_socket, client_address = s.accept()
+print ("Socket successfully connected")
 
 try:
     pygame.init()
@@ -107,7 +107,7 @@ while running:
             if slow_speed: r_speed = r_speed*slow_mode_ratio
 
             z_speed = (pygame.joystick.Joystick(0).get_axis(3))
-            if slow_speed: z_speed = z_speed*slow_mode_ratio             
+                                                                                                                    if slow_speed: z_speed = z_speed*slow_mode_ratio             
         
             axis_x = apply_dead_zones(axis_x, dead_zone)
             axis_y = apply_dead_zones(axis_y, dead_zone)
@@ -209,13 +209,13 @@ while running:
             # print(thruster_values)
 
             json_data = json.dumps(thruster_values)
-            #client_socket.sendall(json_data.encode('utf-8'))
+            client_socket.sendall(json_data.encode('utf-8'))
 
             time.sleep(0.001)
 
 
 pygame.quit()
-#client_socket.close()
+client_socket.close()
 
 # axis_x_pwm_value = joystick_to_pwm(axis_x)
 # axis_y_pwm_value = joystick_to_pwm(axis_y)
