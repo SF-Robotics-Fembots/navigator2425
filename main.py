@@ -5,7 +5,7 @@ import time, json
 #this code actually works so far (convert joystick values to pwm)
 #this code works (sending and recieving messages back and forth)
 
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 print ("Socket successfully created")
 
 host_ip = '192.168.1.68'#'10.0.0.87'
@@ -68,15 +68,6 @@ while running:
             print(f"Raw Values: Axis x: {axis_x}, Axis y: {axis_y}, Axis r:{axis_r}, Axis z: {axis_z}")
 
             #slow mode
-            #button on joystick that if the toggle is pressed first - slow mode, second - back to normal
-            #take a multiplier, slow mode multiply by 50% everytime button is pressed, 
-            #toggle between fast and slow mode
-            # in fast mode 1.0
-            # in slow mode 50% (joystick level)
-            # joystick is half as senstivive
-            # everything is same for x,y,z,r
-            # make it as a variable (slow down ratio)
-            #rotate might need a bigger reduction
             if pygame.joystick.Joystick(0).get_button(2): slow_speed = 0 #10
             if pygame.joystick.Joystick(0).get_button(3): slow_speed = 1 #11
 
