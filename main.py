@@ -33,6 +33,20 @@ else:
     joystick.init()
     print(f"Joystick name: {joystick.get_name()}")
 
+#make disable thrusters button
+# def set_thrusters(Value):
+#     all_thrusters = 0
+#     print(f"set thrusters to {Value}")
+
+# def on_key_event(event):
+#     if event.name == 't':
+#         set_thrusters(1500)
+
+# keyboard.on_press(on_key_event)
+
+# print("press t to set thrusters to 1500, press esc to exit")
+# keyboard.wait('esc')
+
 dead_zone = 0.1
 def apply_dead_zones(value, threshold):
     if abs(value) < threshold:
@@ -155,21 +169,6 @@ while running:
             client_socket.sendall(json_data.encode('utf-8'))
 
             time.sleep(0.001)
-
-#make disable thrusters button
-def set_thrusters(Value):
-    thruster_values = 1500
-    print(f"set thrusters to {Value}")
-
-def on_key_event(event):
-    if event.name == 't':
-        set_thrusters(1500)
-
-keyboard.on_press(on_key_event)
-
-print("press t to set thrusters to 1500, press esc to exit")
-keyboard.wait('esc')
-
 
 pygame.quit()
 client_socket.close()
