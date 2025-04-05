@@ -5,16 +5,16 @@ import keyboard
 #this code actually works so far (convert joystick values to pwm)
 #this code works (sending and recieving messages back and forth)
 
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-print ("Socket successfully created")
+# s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# print ("Socket successfully created")
 
-host_ip = '192.168.1.68'#'10.0.0.87'
-port = 8080
+# host_ip = '192.168.1.68'#'10.0.0.87'
+# port = 8080
 
-s.bind(('', port)) #host_ip
-s.listen(1)
-client_socket, client_address = s.accept()
-print ("Socket successfully connected")
+# s.bind(('', port)) #host_ip
+# s.listen(1)
+# client_socket, client_address = s.accept()
+# print ("Socket successfully connected")
 
 try:
     pygame.init()
@@ -34,18 +34,6 @@ else:
     print(f"Joystick name: {joystick.get_name()}")
 
 #make disable thrusters button
-# def set_thrusters(Value):
-#     all_thrusters = 0
-#     print(f"set thrusters to {Value}")
-
-# def on_key_event(event):
-#     if event.name == 't':
-#         set_thrusters(1500)
-
-# keyboard.on_press(on_key_event)
-
-# print("press t to set thrusters to 1500, press esc to exit")
-# keyboard.wait('esc')
 
 dead_zone = 0.1
 def apply_dead_zones(value, threshold):
@@ -63,6 +51,8 @@ def joystick_to_pwms(value):
 #if dont get value for 0 move according to that
 slow_speed = 0
 slow_mode_ratio = 0.5
+disable_thrusters = 0
+disable_all_ratio = 0
 
 running = True
 while running:
@@ -71,9 +61,6 @@ while running:
         print("...")
         if event.type == pygame.QUIT:
             running = False
-        elif event.type == pygame.JOYBUTTONDOWN:
-            button_12 = joystick.get_button(11)
-            print(button_12)
         elif event.type == pygame.JOYAXISMOTION:
             axis_x = joystick.get_axis(0) #left and right
             axis_y = joystick.get_axis(1) #forward and back
@@ -81,9 +68,23 @@ while running:
             axis_z = joystick.get_axis(3) #vertical (up and down)
             print(f"Raw Values: Axis x: {axis_x}, Axis y: {axis_y}, Axis r:{axis_r}, Axis z: {axis_z}")
 
-            #slow mode
-            if pygame.joystick.Joystick(0).get_button(2): slow_speed = 0 #10
-            if pygame.joystick.Joystick(0).get_button(3): slow_speed = 1 #11
+            #slow mode and disable thrusters
+            if pygame.joystick.Joystick(0):get_button(1): disable_thrusters = 0
+
+            x_thruster = (pygame.joystick.Joystick(0).get_axis(0))
+            if disable_thrusters: x_thruster = x_thruster*disable_all_ratio
+
+            y_thruster = (pygame.joystick.Joystick(0).get_axis(1))
+            if disable_thrusters: y_thruster = y_thruster*disable_all_ratio
+
+            r_thruster = (pygame.joystick.Joystick(0).get_axis(2))
+            if disable_thrusters: r_thruster = r_thruster*disable_all_ratio
+
+            z_thruster = (pygame.joystick.Joystick(0).get_axis(3))
+            if disable_thrusters: z_thruster = z_thruster*disable_all_ratio
+
+            if pygame.joystick.Joystick(0).get_button(2): slow_speed = 0 #fast
+            if pygame.joystick.Joystick(0).get_button(3): slow_speed = 1 #slow
 
             x_speed = (pygame.joystick.Joystick(0).get_axis(0))
             if slow_speed: x_speed = x_speed*slow_mode_ratio
@@ -96,7 +97,7 @@ while running:
 
             z_speed = (pygame.joystick.Joystick(0).get_axis(3))
             if slow_speed: z_speed = z_speed*slow_mode_ratio
-            print(f"Speed: X: {x_speed}, Y: {y_speed}, R: {r_speed}, Z: {z_speed},")      
+            print(f"Speed: X: {x_speed}, Y: {y_speed}, R: {r_speed}, Z: {z_speed},")
         
             axis_x = apply_dead_zones(axis_x, dead_zone)
             axis_y = apply_dead_zones(axis_y, dead_zone)
@@ -166,9 +167,9 @@ while running:
             print(f"PWM Thruster Values: ", thruster_pwm_values)
 
             json_data = json.dumps(thruster_values)
-            client_socket.sendall(json_data.encode('utf-8'))
+            #client_socket.sendall(json_data.encode('utf-8'))
 
             time.sleep(0.001)
 
 pygame.quit()
-client_socket.close()
+#client_socket.close()
