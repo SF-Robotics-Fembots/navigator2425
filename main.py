@@ -115,7 +115,7 @@ while running:
             axis_r_scale = int(round(axis_r_scale * rotation_sensitivity_adj))
 
             #mulptply by 10% create a vairbale rotation_adjustment
-            rotation_adjustment = int(round(axis_y_scale*0.25))
+            rotation_adjustment = int(round(axis_y_scale*0.20))
             axis_r_scale = axis_r_scale + rotation_adjustment
             
             thruster_5 = axis_z_scale #left vertical
