@@ -68,7 +68,6 @@ while running:
             axis_r = joystick.get_axis(2) #rotation (yaw)
             axis_z = joystick.get_axis(3) #vertical (up and down)
             print(f"Raw Values: Axis x: {axis_x}, Axis y: {axis_y}, Axis r:{axis_r}, Axis z: {axis_z}")
-            axis_r = int(round(axis_r * rotation_sensitivity_adj))
 
             #slow mode and disable thrusters
             if pygame.joystick.Joystick(0).get_button(4): disable_thrusters = 0
@@ -113,6 +112,7 @@ while running:
             axis_r_scale = int((axis_r)*-100)
             axis_z_scale = int((axis_z)*-100) #flip verticals
             #print(f"Scale Values: Axis X: {axis_x_scale}, Axis Y: {axis_y_scale}, Axis R:{axis_r_scale}, Axis Z: {axis_z_scale}")
+            axis_r_scale = int(round(axis_r * rotation_sensitivity_adj))
 
             #mulptply by 10% create a vairbale rotation_adjustment
             rotation_adjustment = int(round(axis_y_scale*0.25))
