@@ -112,7 +112,7 @@ while running:
             axis_r_scale = int((axis_r)*-100)
             axis_z_scale = int((axis_z)*-100) #flip verticals
             #print(f"Scale Values: Axis X: {axis_x_scale}, Axis Y: {axis_y_scale}, Axis R:{axis_r_scale}, Axis Z: {axis_z_scale}")
-            axis_r_scale = int(round(axis_r * rotation_sensitivity_adj))
+            axis_r_scale = int(round(axis_r_scale * rotation_sensitivity_adj))
 
             #mulptply by 10% create a vairbale rotation_adjustment
             rotation_adjustment = int(round(axis_y_scale*0.25))
