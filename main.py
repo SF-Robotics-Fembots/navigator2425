@@ -69,7 +69,7 @@ while running:
             print(f"Raw Values: Axis x: {axis_x}, Axis y: {axis_y}, Axis r:{axis_r}, Axis z: {axis_z}")
 
             #slow mode and disable thrusters
-            if pygame.joystick.Joystick(0):get_button(1): disable_thrusters = 0
+            if pygame.joystick.Joystick(0).get_button(1): disable_thrusters = 0
 
             x_thruster = (pygame.joystick.Joystick(0).get_axis(0))
             if disable_thrusters: x_thruster = x_thruster*disable_all_ratio
