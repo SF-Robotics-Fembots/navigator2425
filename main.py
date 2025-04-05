@@ -113,7 +113,7 @@ while running:
             #print(f"Scale Values: Axis X: {axis_x_scale}, Axis Y: {axis_y_scale}, Axis R:{axis_r_scale}, Axis Z: {axis_z_scale}")
 
             #mulptply by 10% create a vairbale rotation_adjustment
-            rotation_adjustment = int(round(axis_x_scale*0.1))
+            rotation_adjustment = int(round(axis_x_scale*0.25))
             axis_r_scale = axis_r_scale - rotation_adjustment
             
             thruster_5 = axis_z_scale #left vertical
