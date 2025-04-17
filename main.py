@@ -1,8 +1,6 @@
 import pygame
 import socket
 import time, json
-#this code actually works so far (convert joystick values to pwm)
-#this code works (sending and recieving messages back and forth)
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 print ("Socket successfully created")
@@ -32,8 +30,6 @@ else:
     joystick.init()
     print(f"Joystick name: {joystick.get_name()}")
 
-#make disable thrusters button
-
 dead_zone = 0.1
 def apply_dead_zones(value, threshold):
     if abs(value) < threshold:
@@ -49,8 +45,6 @@ def joystick_to_pwms(value):
 #*50 or *100 then scale it after
 #if dont get value for 0 move according to that
 slow_mode_ratio = 0 #0.5
-disable_thrusters = 0
-disable_all_ratio = 0
 rotation_sensitivity_adj = 0.25
 
 running = True
@@ -66,23 +60,6 @@ while running:
             axis_r = joystick.get_axis(2) #rotation (yaw)
             axis_z = joystick.get_axis(3) #vertical (up and down)
             print(f"Raw Values: Axis x: {axis_x}, Axis y: {axis_y}, Axis r:{axis_r}, Axis z: {axis_z}")
-
-            #slow mode and disable thrusters
-            #if pygame.joystick.Joystick(0).get_button(4): disable_thrusters = 0
-
-#            x_thruster = (pygame.joystick.Joystick(0).get_axis(0))
- #           if disable_thrusters: x_thruster = int(x_thruster*disable_all_ratio)
-
-#            y_thruster = (pygame.joystick.Joystick(0).get_axis(1))
- #           if disable_thrusters: y_thruster = int(y_thruster*disable_all_ratio)
-
-  #          r_thruster = (pygame.joystick.Joystick(0).get_axis(2))
-   #         if disable_thrusters: r_thruster = int(r_thruster*disable_all_ratio)
-
-   #         z_thruster = (pygame.joystick.Joystick(0).get_axis(3))
-    #        if disable_thrusters: z_thruster = int(z_thruster*disable_all_ratio)
-     #       print(f"Disable: X: {x_thruster}, Y: {y_thruster}, R: {r_thruster}, Z: {z_thruster}")
-
 
             if pygame.joystick.Joystick(0).get_button(5): slow_mode_ratio = 0 #stop
             if pygame.joystick.Joystick(0).get_button(2): slow_mode_ratio = 1 #fast
@@ -163,7 +140,7 @@ while running:
             thruster_1_c = thruster_1_b * power_ratio
 
             final_percentage = [thruster_5_c, thruster_4_c, thruster_3_c, thruster_2_c, thruster_1_c]
-            print("Final Percentage: ", final_percentage)
+            #print("Final Percentage: ", final_percentage)
 
             thruster_pwm_values = [joystick_to_pwms(percentage) for percentage in final_percentage]
             #print("Thruster PWM Values: ", thruster_pwm_values)
