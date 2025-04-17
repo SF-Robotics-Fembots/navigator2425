@@ -2,16 +2,16 @@ import pygame
 import socket
 import time, json
 
-# s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-# print ("Socket successfully created")
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+print ("Socket successfully created")
 
-# host_ip = '192.168.1.68'#'10.0.0.87'
-# port = 8080
+host_ip = '192.168.1.68'#'10.0.0.87'
+port = 8080
 
-# s.bind(('', port)) #host_ip
-# s.listen(1)
-# client_socket, client_address = s.accept()
-# print ("Socket successfully connected")
+s.bind(('', port)) #host_ip
+s.listen(1)
+client_socket, client_address = s.accept()
+print ("Socket successfully connected")
 
 try:
     pygame.init()
@@ -66,9 +66,9 @@ while running:
             if pygame.joystick.Joystick(0).get_button(3): slow_mode_ratio = 0.5 #slow
 
             axis_x = axis_x*slow_mode_ratio
-            axis_y = axis_x*slow_mode_ratio
-            axis_r = axis_x*slow_mode_ratio
-            axis_z = axis_x*slow_mode_ratio
+            axis_y = axis_y*slow_mode_ratio
+            axis_r = axis_r*slow_mode_ratio
+            axis_z = axis_z*slow_mode_ratio
             
             #x_speed = (pygame.joystick.Joystick(0).get_axis(0))
             #x_speed = x_speed*slow_mode_ratio
@@ -156,9 +156,9 @@ while running:
             print(f"PWM Thruster Values: ", thruster_pwm_values)
 
             json_data = json.dumps(thruster_values)
-            #client_socket.sendall(json_data.encode('utf-8'))
+            client_socket.sendall(json_data.encode('utf-8'))
 
             time.sleep(0.001)
 
 pygame.quit()
-#client_socket.close()
+client_socket.close()
