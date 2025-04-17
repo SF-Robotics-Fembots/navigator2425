@@ -1,7 +1,6 @@
 import pygame
 import socket
 import time, json
-import keyboard
 #this code actually works so far (convert joystick values to pwm)
 #this code works (sending and recieving messages back and forth)
 
@@ -49,7 +48,6 @@ def joystick_to_pwms(value):
 
 #*50 or *100 then scale it after
 #if dont get value for 0 move according to that
-slow_speed = 0
 slow_mode_ratio = 0 #0.5
 disable_thrusters = 0
 disable_all_ratio = 0
