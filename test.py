@@ -26,6 +26,7 @@ shield.frequency = 98 #was 100
 
 while True:
     for x in range(90, 101):
+        print("shield freq: " + str(x))
         shield.frequency = x
 
         thrusterChannel5 = shield.channels[14]
@@ -42,12 +43,14 @@ while True:
         thrusterChannel5.duty_cycle = throttlePW
         time.sleep(0)
         print("5")
+        time.sleep(0.005)
 
         #4
         throttlePW = int((pwm_values[1]/10000*65536)*(x/100))
         thrusterChannel4.duty_cycle = throttlePW
         time.sleep(0)
         print("4")
+        time.sleep(0.005)
 
 
         #3
@@ -55,6 +58,7 @@ while True:
         thrusterChannel3.duty_cycle = throttlePW
         time.sleep(0)
         print("3")
+        time.sleep(0.005)
 
 
         #2
@@ -62,6 +66,7 @@ while True:
         thrusterChannel2.duty_cycle = throttlePW
         time.sleep(0)
         print("2")
+        time.sleep(0.005)
 
 
         #1
@@ -69,6 +74,7 @@ while True:
         thrusterChannel1.duty_cycle = throttlePW
         time.sleep(0)
         print("1")
+        time.sleep(0.005)
 
         
         try:
