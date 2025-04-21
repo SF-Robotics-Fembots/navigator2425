@@ -24,7 +24,7 @@ shield = adafruit_pca9685.PCA9685(i2c)
 kit = ServoKit(channels=16)
 shield.frequency = 98 #was 100
 
-for x in range(90, 101):
+for x in range(90, 110):
     print("shield freq: " + str(x))
     shield.frequency = x
 
