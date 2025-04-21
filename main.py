@@ -59,7 +59,7 @@ while running:
             axis_y = joystick.get_axis(1) #forward and back
             axis_r = joystick.get_axis(2) #rotation (yaw)
             axis_z = joystick.get_axis(3) #vertical (up and down)
-            print(f"Raw Values: Axis x: {axis_x}, Axis y: {axis_y}, Axis r:{axis_r}, Axis z: {axis_z}")
+            #print(f"Raw Values: Axis x: {axis_x}, Axis y: {axis_y}, Axis r:{axis_r}, Axis z: {axis_z}")
 
             if pygame.joystick.Joystick(0).get_button(5): slow_mode_ratio = 0 #stop
             if pygame.joystick.Joystick(0).get_button(2): slow_mode_ratio = 1 #fast
@@ -81,7 +81,7 @@ while running:
 
             # z_speed = (pygame.joystick.Joystick(0).get_axis(3))
             # z_speed = z_speed*slow_mode_ratio
-            print(f"Speed: X: {axis_x}, Y: {axis_y}, R: {axis_r}, Z: {axis_z}")
+            #print(f"Speed: X: {axis_x}, Y: {axis_y}, R: {axis_r}, Z: {axis_z}")
         
             axis_x = apply_dead_zones(axis_x, dead_zone)
             axis_y = apply_dead_zones(axis_y, dead_zone)
