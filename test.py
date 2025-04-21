@@ -33,8 +33,7 @@ thrusterChannel = [shield.channels[14], shield.channels[1], shield.channels[8], 
 # thrusterChannel[3] = shield.channels[15]
 # thrusterChannel[4] = shield.channels[2]
 
-pwm_values = [1000, 1500, 2000]
-
+pwm_values = [1000, 1500, 2000, 1500]
 
 for y in range(0,5):
    thrusterChannel[y].duty_cycle = 0x2666
