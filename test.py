@@ -6,6 +6,7 @@ import adafruit_pca9685 #import PCA9685
 from adafruit_servokit import ServoKit
 import socket, time, json, sys
 
+
 #set thrusters on bottomside
 thruster_5 = 0 #5
 thruster_4 = 0 #4
@@ -22,20 +23,24 @@ print(listofdev)
 i2c = board.I2C() # uses board.SCL and board.SDA
 shield = adafruit_pca9685.PCA9685(i2c)
 kit = ServoKit(channels=16)
-shield.frequency = 98 #was 100
+shield.frequency = 100 #was 100
+
+thrusterChannel[0] = shield.channels[14]
+thrusterChannel[1] = shield.channels[1]
+thrusterChannel[2] = shield.channels[8]
+thrusterChannel[3] = shield.channels[15]
+thrusterChannel[4] = shield.channels[2]
+
+pwm_values = [1000, 1500, 2000]
+
+
+for y in range(0,5):
+   thrusterChannel[y].duty_cycle = 0x2666
+
 
 for x in range(90, 110):
     print("shield freq: " + str(x))
     shield.frequency = x
-
-    thrusterChannel[5] = shield.channels[14]
-    thrusterChannel[4] = shield.channels[1]
-    thrusterChannel[3] = shield.channels[8]
-    thrusterChannel[2] = shield.channels[15]
-    thrusterChannel[1] = shield.channels[2]
-    thrusterChannel5.duty_cycle = 0x2666
-
-    pwm_values = [1000, 1500, 2000]
 
     for z in range(0, 4):
       for i in range(0, 5):
