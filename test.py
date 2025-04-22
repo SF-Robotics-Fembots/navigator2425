@@ -38,7 +38,7 @@ thrusterChannel = [shield.channels[11], shield.channels[10]]
 pwm_values = [1000, 1500, 2000, 1500]
 
 
-for x in range(85, 105):
+for x in range(80, 100):
     print("shield freq: " + str(x))
     shield.frequency = x
 
