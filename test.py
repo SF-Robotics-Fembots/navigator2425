@@ -25,13 +25,13 @@ shield = adafruit_pca9685.PCA9685(i2c)
 kit = ServoKit(channels=16)
 shield.frequency = 100 #was 100
 
-thrusterChannel = [shield.channels[14], shield.channels[1], shield.channels[8], shield.channels[15], shield.channels[2]]
+thrusterChannel = [shield.channels[14], shield.channels[11], shield.channels[8], shield.channels[15], shield.channels[10]]
 
-# thrusterChannel[0] = shield.channels[14]
-# thrusterChannel[1] = shield.channels[1]
-# thrusterChannel[2] = shield.channels[8]
-# thrusterChannel[3] = shield.channels[15]
-# thrusterChannel[4] = shield.channels[2]
+# thrusterChannel5 = shield.channels[14] #left vertical
+# thrusterChannel4 = shield.channels[11] #right vertical 1
+# thrusterChannel3 = shield.channels[8] #middle
+# thrusterChannel2 = shield.channels[15] #left horizontal
+# thrusterChannel1 = shield.channels[10] #right horizontal 2
 
 pwm_values = [1000, 1500, 2000, 1500]
 
